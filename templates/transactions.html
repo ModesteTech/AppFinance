@@ -1,5 +1,204 @@
 <!DOCTYPE html>
-<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Transactions — WANDJI FINANCE</title><link rel="stylesheet" href="../static/css/base.css"><link rel="stylesheet" href="../static/css/finance.css"></head>
-<body class="app-page"><header class="app-header"><div class="container nav-container"><a class="brand" href="dashboard.html"><span class="brand-mark">W</span><span>WANDJI FINANCE</span></a><div class="header-actions"><a href="notifications.html">◔</a><a href="profile.html" class="user-avatar">M</a></div></div></header>
-<div class="app-layout"><aside class="sidebar"><nav><span class="side-label">PRINCIPAL</span><a href="dashboard.html">▦ Tableau de bord</a><a class="active" href="transactions.html">↔ Transactions</a><a href="statistics.html">◒ Statistiques</a><span class="side-label">FINANCES</span><a href="revenues.html">↗ Revenus</a><a href="expenses.html">↘ Dépenses</a><a href="budgets.html">▤ Budgets</a><a href="goals.html">◎ Objectifs</a><span class="side-label">COMPTE</span><a href="profile.html">◯ Profil</a><a href="notifications.html">◔ Notifications</a><a href="settings.html">⚙ Paramètres</a></nav></aside>
-<main class="dashboard-main"><div class="container"><div class="page-header"><div><span class="eyebrow">HISTORIQUE</span><h1>Transactions</h1><p>Retrouvez toutes vos opérations financières.</p></div><a class="btn btn-primary" href="add_transaction.html">+ Nouvelle opération</a></div><section class="panel table-panel"><div class="filters"><input type="search" placeholder="Rechercher..."><select><option>Tous les types</option><option>Revenus</option><option>Dépenses</option></select><select><option>Toutes les dates</option><option>Ce mois</option><option>Cette année</option></select></div><div class="table-wrap"><table><thead><tr><th>Opération</th><th>Type</th><th>Catégorie</th><th>Date</th><th>Montant</th></tr></thead><tbody><tr><td><strong>Salaire</strong><small>Entreprise</small></td><td><span class="badge badge-green">Revenu</span></td><td>Travail</td><td>08 oct.</td><td class="positive">+450 000 FCFA</td></tr><tr><td><strong>Courses</strong><small>Supermarché</small></td><td><span class="badge badge-red">Dépense</span></td><td>Alimentation</td><td>07 oct.</td><td class="negative">-18 500 FCFA</td></tr><tr><td><strong>Freelance</strong><small>Projet web</small></td><td><span class="badge badge-green">Revenu</span></td><td>Freelance</td><td>03 oct.</td><td class="positive">+85 000 FCFA</td></tr></tbody></table></div></section></div></main></div></body></html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Transactions - WANDJI FINANCE</title>
+
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/finance.css">
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+
+                <a href="dashboard.html" class="logo">
+                    <span class="logo-mark">W</span>
+                    <span class="logo-text">WANDJI FINANCE</span>
+                </a>
+
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="dashboard.html">
+                    Tableau de bord
+                </a>
+
+                <a href="transactions.html" class="active">
+                    Transactions
+                </a>
+
+                <a href="statistics.html">
+                    Statistiques
+                </a>
+
+                <a href="revenues.html">
+                    Revenus
+                </a>
+
+                <a href="expenses.html">
+                    Dépenses
+                </a>
+
+                <a href="budgets.html">
+                    Budgets
+                </a>
+
+                <a href="goals.html">
+                    Objectifs
+                </a>
+
+                <a href="profile.html">
+                    Profil
+                </a>
+
+                <a href="notifications.html">
+                    Notifications
+                </a>
+
+                <a href="settings.html">
+                    Paramètres
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+        <main class="dashboard-main">
+
+            <header class="page-header">
+
+                <div>
+
+                    <span class="dashboard-label">
+                        FINANCES
+                    </span>
+
+                    <h1>
+                        Transactions
+                    </h1>
+
+                    <p>
+                        Retrouvez l'ensemble de vos mouvements financiers.
+                    </p>
+
+                </div>
+
+                <a href="add_transaction.html" class="button button-primary">
+                    + Nouvelle transaction
+                </a>
+
+            </header>
+
+
+            <section class="dashboard-card">
+
+                <div class="filters">
+
+                    <input
+                        type="search"
+                        placeholder="Rechercher une transaction..."
+                    >
+
+                    <select>
+                        <option>
+                            Toutes les catégories
+                        </option>
+
+                        <option>
+                            Alimentation
+                        </option>
+
+                        <option>
+                            Transport
+                        </option>
+
+                        <option>
+                            Travail
+                        </option>
+                    </select>
+
+                    <select>
+                        <option>
+                            Toutes
+                        </option>
+
+                        <option>
+                            Revenus
+                        </option>
+
+                        <option>
+                            Dépenses
+                        </option>
+                    </select>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Description</th>
+                                <th>Type</th>
+                                <th>Catégorie</th>
+                                <th>Date</th>
+                                <th>Montant</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>Salaire</td>
+                                <td>Revenu</td>
+                                <td>Travail</td>
+                                <td>05/10/2026</td>
+                                <td class="income">+350 000 FCFA</td>
+                            </tr>
+
+                            <tr>
+                                <td>Courses</td>
+                                <td>Dépense</td>
+                                <td>Alimentation</td>
+                                <td>07/10/2026</td>
+                                <td class="expense">-18 500 FCFA</td>
+                            </tr>
+
+                            <tr>
+                                <td>Freelance</td>
+                                <td>Revenu</td>
+                                <td>Activité</td>
+                                <td>03/10/2026</td>
+                                <td class="income">+180 000 FCFA</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>

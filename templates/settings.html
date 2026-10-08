@@ -1,3 +1,153 @@
 <!DOCTYPE html>
-<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Paramètres — WANDJI FINANCE</title><link rel="stylesheet" href="../static/css/base.css"><link rel="stylesheet" href="../static/css/account.css"></head>
-<body class="app-page"><header class="app-header"><div class="container nav-container"><a class="brand" href="dashboard.html"><span class="brand-mark">W</span><span>WANDJI FINANCE</span></a></div></header><main class="account-main"><div class="container narrow-wide"><div class="page-header"><div><span class="eyebrow">PRÉFÉRENCES</span><h1>Paramètres</h1><p>Personnalisez votre expérience WANDJI FINANCE.</p></div></div><section class="panel settings-list"><div class="setting"><div><h3>Notifications financières</h3><p>Recevoir des rappels sur mes budgets et objectifs.</p></div><label class="switch"><input type="checkbox" checked><span></span></label></div><div class="setting"><div><h3>Notifications email</h3><p>Recevoir les informations importantes par email.</p></div><label class="switch"><input type="checkbox" checked><span></span></label></div><div class="setting"><div><h3>Devise</h3><p>Devise principale de votre espace.</p></div><select><option>FCFA — XAF</option><option>EUR — €</option><option>USD — $</option></select></div><div class="setting"><div><h3>Langue</h3><p>Langue de l'interface.</p></div><select><option>Français</option><option>English</option></select></div></section></div></main></body></html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Paramètres - WANDJI FINANCE</title>
+
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/account.css">
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+
+                <a href="dashboard.html" class="logo">
+                    <span class="logo-mark">W</span>
+                    <span class="logo-text">WANDJI FINANCE</span>
+                </a>
+
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="dashboard.html">Tableau de bord</a>
+                <a href="transactions.html">Transactions</a>
+                <a href="profile.html">Profil</a>
+                <a href="security.html">Sécurité</a>
+                <a href="settings.html" class="active">Paramètres</a>
+
+            </nav>
+
+        </aside>
+
+
+        <main class="dashboard-main">
+
+            <header class="page-header">
+
+                <div>
+
+                    <span class="dashboard-label">
+                        COMPTE
+                    </span>
+
+                    <h1>
+                        Paramètres
+                    </h1>
+
+                    <p>
+                        Personnalisez votre expérience WANDJI FINANCE.
+                    </p>
+
+                </div>
+
+            </header>
+
+
+            <section class="settings-list">
+
+                <div class="setting-item">
+
+                    <div>
+
+                        <h2>
+                            Devise
+                        </h2>
+
+                        <p>
+                            Devise utilisée pour vos finances.
+                        </p>
+
+                    </div>
+
+                    <select>
+
+                        <option>
+                            FCFA
+                        </option>
+
+                        <option>
+                            EUR
+                        </option>
+
+                        <option>
+                            USD
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="setting-item">
+
+                    <div>
+
+                        <h2>
+                            Notifications
+                        </h2>
+
+                        <p>
+                            Recevoir des alertes concernant vos finances.
+                        </p>
+
+                    </div>
+
+                    <input
+                        type="checkbox"
+                        checked
+                    >
+
+                </div>
+
+
+                <div class="setting-item">
+
+                    <div>
+
+                        <h2>
+                            Rappels de budget
+                        </h2>
+
+                        <p>
+                            Recevoir une alerte lorsque votre budget approche
+                            de sa limite.
+                        </p>
+
+                    </div>
+
+                    <input
+                        type="checkbox"
+                        checked
+                    >
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>

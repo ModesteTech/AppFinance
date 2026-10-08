@@ -1,23 +1,172 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Inscription — WANDJI FINANCE</title>
-<link rel="stylesheet" href="../static/css/base.css"><link rel="stylesheet" href="../static/css/auth.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Inscription - WANDJI FINANCE</title>
+
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/auth.css">
 </head>
-<body class="auth-page">
-<div class="auth-shell">
-    <div class="auth-brand-panel"><a class="brand" href="index.html"><span class="brand-mark">W</span><span>WANDJI FINANCE</span></a><div><span class="eyebrow">VOTRE ESPACE</span><h1>Commencez à mieux gérer votre argent.</h1><p>Créez votre compte et construisez votre tableau de bord financier.</p></div></div>
-    <div class="auth-form-panel"><a class="mobile-brand brand" href="index.html"><span class="brand-mark">W</span><span>WANDJI FINANCE</span></a><div class="auth-form"><span class="eyebrow">INSCRIPTION</span><h2>Créer votre compte</h2><p class="form-intro">Quelques informations suffisent pour commencer.</p>
-        <form>
-            <label>Nom complet<input type="text" placeholder="Wandji Modeste" required></label>
-            <label>Adresse email<input type="email" placeholder="vous@exemple.com" required></label>
-            <label>Mot de passe<input type="password" placeholder="Créez un mot de passe" required></label>
-            <label class="checkbox-label"><input type="checkbox" required> J'accepte les conditions d'utilisation.</label>
-            <button class="btn btn-primary btn-full" type="submit">Créer mon compte</button>
-        </form>
-        <p class="auth-switch">Vous avez déjà un compte ? <a href="login.html">Se connecter</a></p>
-    </div></div>
-</div>
+
+<body>
+
+    <main class="auth-page">
+
+        <div class="auth-container">
+
+            <div class="auth-brand">
+
+                <a href="index.html" class="logo">
+                    <span class="logo-mark">W</span>
+                    <span class="logo-text">WANDJI FINANCE</span>
+                </a>
+
+                <h1>
+                    Commencez à mieux gérer votre argent.
+                </h1>
+
+                <p>
+                    Créez votre compte et construisez une meilleure
+                    relation avec vos finances.
+                </p>
+
+            </div>
+
+
+            <div class="auth-card">
+
+                <div class="auth-card-header">
+
+                    <h2>
+                        Créer un compte
+                    </h2>
+
+                    <p>
+                        Quelques informations suffisent pour commencer.
+                    </p>
+
+                </div>
+
+
+                <form class="auth-form">
+
+                    <div class="form-group">
+
+                        <label for="fullname">
+                            Nom complet
+                        </label>
+
+                        <input
+                            type="text"
+                            id="fullname"
+                            name="fullname"
+                            placeholder="Votre nom complet"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Adresse email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="exemple@email.com"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Mot de passe
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Choisissez un mot de passe"
+                            required
+                        >
+
+                        <small>
+                            Utilisez au moins 8 caractères.
+                        </small>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="confirm-password">
+                            Confirmer le mot de passe
+                        </label>
+
+                        <input
+                            type="password"
+                            id="confirm-password"
+                            name="confirm-password"
+                            placeholder="Confirmez votre mot de passe"
+                            required
+                        >
+
+                    </div>
+
+
+                    <label class="checkbox-label">
+
+                        <input
+                            type="checkbox"
+                            name="terms"
+                            required
+                        >
+
+                        <span>
+                            J'accepte les conditions d'utilisation.
+                        </span>
+
+                    </label>
+
+
+                    <button
+                        type="submit"
+                        class="button button-primary button-full"
+                    >
+                        Créer mon compte
+                    </button>
+
+                </form>
+
+
+                <div class="auth-footer">
+
+                    <p>
+                        Vous avez déjà un compte ?
+                        <a href="login.html">
+                            Se connecter
+                        </a>
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
 </body>
+
 </html>

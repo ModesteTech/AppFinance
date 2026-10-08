@@ -1,15 +1,413 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Tableau de bord — WANDJI FINANCE</title><link rel="stylesheet" href="../static/css/base.css"><link rel="stylesheet" href="../static/css/dashboard.css"></head>
-<body class="app-page">
-<header class="app-header"><div class="container nav-container"><a class="brand" href="dashboard.html"><span class="brand-mark">W</span><span>WANDJI FINANCE</span></a><div class="header-actions"><a href="notifications.html">◔</a><a href="profile.html" class="user-avatar">M</a></div></div></header>
-<div class="app-layout">
-<aside class="sidebar"><nav><span class="side-label">PRINCIPAL</span><a class="active" href="dashboard.html">▦ Tableau de bord</a><a href="transactions.html">↔ Transactions</a><a href="statistics.html">◒ Statistiques</a><span class="side-label">FINANCES</span><a href="revenues.html">↗ Revenus</a><a href="expenses.html">↘ Dépenses</a><a href="budgets.html">▤ Budgets</a><a href="goals.html">◎ Objectifs</a><span class="side-label">COMPTE</span><a href="profile.html">◯ Profil</a><a href="notifications.html">◔ Notifications</a><a href="settings.html">⚙ Paramètres</a></nav></aside>
-<main class="dashboard-main"><div class="container">
-<div class="page-header"><div><span class="eyebrow">VUE D'ENSEMBLE</span><h1>Bonjour Modeste 👋</h1><p>Voici un aperçu de votre situation financière.</p></div><a class="btn btn-primary" href="add_transaction.html">+ Nouvelle opération</a></div>
-<div class="stats-grid"><article class="stat-card main-stat"><span>Solde disponible</span><strong>428 500 FCFA</strong><small class="positive">+8,4% ce mois</small></article><article class="stat-card"><span>Revenus</span><strong>685 000 FCFA</strong><small class="positive">+12,2%</small></article><article class="stat-card"><span>Dépenses</span><strong>256 500 FCFA</strong><small class="negative">+3,7%</small></article><article class="stat-card"><span>Épargne</span><strong>124 000 FCFA</strong><small class="positive">+15,1%</small></article></div>
-<div class="dashboard-grid"><section class="panel chart-panel"><div class="panel-heading"><div><h2>Évolution financière</h2><p>Vue des sept derniers mois</p></div><select><option>7 derniers mois</option><option>Cette année</option></select></div><div class="fake-chart"><div class="chart-bars"><i style="height:40%"></i><i style="height:55%"></i><i style="height:48%"></i><i style="height:70%"></i><i style="height:62%"></i><i style="height:82%"></i><i style="height:92%"></i></div><div class="chart-labels"><span>Avr.</span><span>Mai</span><span>Juin</span><span>Juil.</span><span>Août</span><span>Sept.</span><span>Oct.</span></div></div></section>
-<section class="panel"><div class="panel-heading"><div><h2>Transactions récentes</h2><p>Vos dernières opérations</p></div><a href="transactions.html">Voir tout</a></div><div class="activity-list"><div class="activity"><span class="activity-icon income">↗</span><div><strong>Salaire</strong><small>Aujourd'hui</small></div><b class="positive">+450 000</b></div><div class="activity"><span class="activity-icon expense">↘</span><div><strong>Alimentation</strong><small>Hier</small></div><b class="negative">-18 500</b></div><div class="activity"><span class="activity-icon expense">↘</span><div><strong>Transport</strong><small>05 oct.</small></div><b class="negative">-12 000</b></div><div class="activity"><span class="activity-icon income">↗</span><div><strong>Freelance</strong><small>03 oct.</small></div><b class="positive">+85 000</b></div></div></section></div>
-<div class="dashboard-grid bottom-grid"><section class="panel"><div class="panel-heading"><div><h2>Budget du mois</h2><p>Dépenses par rapport à vos limites</p></div><a href="budgets.html">Gérer</a></div><div class="budget-mini"><div><span>Alimentation</span><b>72%</b></div><div class="progress"><i style="width:72%"></i></div></div><div class="budget-mini"><div><span>Transport</span><b>48%</b></div><div class="progress"><i style="width:48%"></i></div></div><div class="budget-mini"><div><span>Loisirs</span><b>31%</b></div><div class="progress"><i style="width:31%"></i></div></div></section><section class="panel"><div class="panel-heading"><div><h2>Objectif principal</h2><p>Ordinateur professionnel</p></div><a href="goals.html">Voir</a></div><div class="goal-circle"><strong>68%</strong><span>340 000 / 500 000 FCFA</span></div><a class="btn btn-outline btn-full" href="goal_detail.html">Suivre l'objectif</a></section></div>
-</div></main></div>
-</body></html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tableau de bord - WANDJI FINANCE</title>
+
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+
+                <a href="dashboard.html" class="logo">
+                    <span class="logo-mark">W</span>
+                    <span class="logo-text">WANDJI FINANCE</span>
+                </a>
+
+            </div>
+
+
+            <nav class="sidebar-nav">
+
+                <span class="nav-title">
+                    PRINCIPAL
+                </span>
+
+                <a href="dashboard.html" class="active">
+                    Tableau de bord
+                </a>
+
+                <a href="transactions.html">
+                    Transactions
+                </a>
+
+                <a href="statistics.html">
+                    Statistiques
+                </a>
+
+
+                <span class="nav-title">
+                    FINANCES
+                </span>
+
+                <a href="revenues.html">
+                    Revenus
+                </a>
+
+                <a href="expenses.html">
+                    Dépenses
+                </a>
+
+                <a href="budgets.html">
+                    Budgets
+                </a>
+
+                <a href="goals.html">
+                    Objectifs
+                </a>
+
+
+                <span class="nav-title">
+                    COMPTE
+                </span>
+
+                <a href="profile.html">
+                    Profil
+                </a>
+
+                <a href="notifications.html">
+                    Notifications
+                </a>
+
+                <a href="settings.html">
+                    Paramètres
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <a href="index.html">
+                    Retour au site
+                </a>
+
+                <a href="login.html">
+                    Déconnexion
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <main class="dashboard-main">
+
+            <header class="dashboard-header">
+
+                <div>
+
+                    <span class="dashboard-label">
+                        TABLEAU DE BORD
+                    </span>
+
+                    <h1>
+                        Bonjour, Modeste 👋
+                    </h1>
+
+                    <p>
+                        Voici un aperçu de votre situation financière.
+                    </p>
+
+                </div>
+
+
+                <a href="add_transaction.html" class="button button-primary">
+                    + Nouvelle transaction
+                </a>
+
+            </header>
+
+
+            <section class="stats-grid">
+
+                <article class="stat-card">
+
+                    <span>
+                        Solde disponible
+                    </span>
+
+                    <strong>
+                        428 500 FCFA
+                    </strong>
+
+                    <small>
+                        +8,4 % ce mois
+                    </small>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <span>
+                        Revenus
+                    </span>
+
+                    <strong>
+                        685 000 FCFA
+                    </strong>
+
+                    <small>
+                        +12,2 % ce mois
+                    </small>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <span>
+                        Dépenses
+                    </span>
+
+                    <strong>
+                        256 500 FCFA
+                    </strong>
+
+                    <small>
+                        -4,8 % ce mois
+                    </small>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <span>
+                        Épargne
+                    </span>
+
+                    <strong>
+                        124 000 FCFA
+                    </strong>
+
+                    <small>
+                        Objectif : 200 000 FCFA
+                    </small>
+
+                </article>
+
+            </section>
+
+
+            <section class="dashboard-grid">
+
+                <article class="dashboard-card chart-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h2>
+                                Évolution financière
+                            </h2>
+
+                            <p>
+                                Revenus et dépenses
+                            </p>
+
+                        </div>
+
+                        <select>
+                            <option>
+                                6 derniers mois
+                            </option>
+
+                            <option>
+                                Cette année
+                            </option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="fake-chart">
+
+                        <div class="chart-bars">
+
+                            <span style="height: 45%;"></span>
+                            <span style="height: 60%;"></span>
+                            <span style="height: 50%;"></span>
+                            <span style="height: 75%;"></span>
+                            <span style="height: 65%;"></span>
+                            <span style="height: 90%;"></span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h2>
+                                Dernières transactions
+                            </h2>
+
+                            <p>
+                                Vos mouvements récents
+                            </p>
+
+                        </div>
+
+                        <a href="transactions.html">
+                            Voir tout
+                        </a>
+
+                    </div>
+
+
+                    <div class="transaction-list">
+
+                        <div class="transaction-item">
+
+                            <div>
+                                <strong>
+                                    Salaire
+                                </strong>
+
+                                <span>
+                                    Aujourd'hui
+                                </span>
+                            </div>
+
+                            <strong class="income">
+                                +350 000 FCFA
+                            </strong>
+
+                        </div>
+
+
+                        <div class="transaction-item">
+
+                            <div>
+                                <strong>
+                                    Alimentation
+                                </strong>
+
+                                <span>
+                                    Hier
+                                </span>
+                            </div>
+
+                            <strong class="expense">
+                                -18 500 FCFA
+                            </strong>
+
+                        </div>
+
+
+                        <div class="transaction-item">
+
+                            <div>
+                                <strong>
+                                    Transport
+                                </strong>
+
+                                <span>
+                                    06 oct. 2026
+                                </span>
+                            </div>
+
+                            <strong class="expense">
+                                -7 500 FCFA
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <section class="dashboard-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2>
+                            Vos objectifs
+                        </h2>
+
+                        <p>
+                            Continuez vos efforts.
+                        </p>
+
+                    </div>
+
+                    <a href="goals.html">
+                        Voir les objectifs
+                    </a>
+
+                </div>
+
+
+                <div class="goal-preview">
+
+                    <div class="goal-preview-info">
+
+                        <strong>
+                            Ordinateur portable
+                        </strong>
+
+                        <span>
+                            650 000 / 900 000 FCFA
+                        </span>
+
+                    </div>
+
+                    <div class="progress">
+                        <span style="width: 72%;"></span>
+                    </div>
+
+                </div>
+
+
+                <div class="goal-preview">
+
+                    <div class="goal-preview-info">
+
+                        <strong>
+                            Épargne de sécurité
+                        </strong>
+
+                        <span>
+                            124 000 / 200 000 FCFA
+                        </span>
+
+                    </div>
+
+                    <div class="progress">
+                        <span style="width: 62%;"></span>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>

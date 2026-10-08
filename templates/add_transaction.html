@@ -1,3 +1,220 @@
 <!DOCTYPE html>
-<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Nouvelle opération — WANDJI FINANCE</title><link rel="stylesheet" href="../static/css/base.css"><link rel="stylesheet" href="../static/css/form.css"></head>
-<body class="app-page"><header class="app-header"><div class="container nav-container"><a class="brand" href="dashboard.html"><span class="brand-mark">W</span><span>WANDJI FINANCE</span></a><a href="profile.html" class="user-avatar">M</a></div></header><main class="form-main"><div class="container narrow"><a class="back-link" href="transactions.html">← Retour aux transactions</a><div class="form-header"><span class="eyebrow">TRANSACTION</span><h1>Nouvelle opération</h1><p>Ajoutez rapidement une entrée ou une sortie.</p></div><form class="panel form-card"><div class="type-selector"><label><input type="radio" name="type" checked> <span>↗ Revenu</span></label><label><input type="radio" name="type"> <span>↘ Dépense</span></label></div><label>Montant (FCFA)<input type="number" placeholder="0"></label><label>Catégorie<select><option>Choisir une catégorie</option><option>Salaire</option><option>Alimentation</option><option>Transport</option><option>Freelance</option><option>Autre</option></select></label><label>Date<input type="date"></label><label>Description<textarea placeholder="Ajoutez une description..."></textarea></label><div class="form-actions"><a class="btn btn-outline" href="transactions.html">Annuler</a><button class="btn btn-primary" type="submit">Enregistrer</button></div></form></div></main></body></html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nouvelle transaction - WANDJI FINANCE</title>
+
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/form.css">
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+
+                <a href="dashboard.html" class="logo">
+                    <span class="logo-mark">W</span>
+                    <span class="logo-text">WANDJI FINANCE</span>
+                </a>
+
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="dashboard.html">Tableau de bord</a>
+                <a href="transactions.html" class="active">Transactions</a>
+                <a href="revenues.html">Revenus</a>
+                <a href="expenses.html">Dépenses</a>
+                <a href="budgets.html">Budgets</a>
+                <a href="goals.html">Objectifs</a>
+                <a href="profile.html">Profil</a>
+                <a href="settings.html">Paramètres</a>
+
+            </nav>
+
+        </aside>
+
+
+        <main class="dashboard-main">
+
+            <header class="page-header">
+
+                <div>
+
+                    <span class="dashboard-label">
+                        TRANSACTIONS
+                    </span>
+
+                    <h1>
+                        Nouvelle transaction
+                    </h1>
+
+                    <p>
+                        Ajoutez rapidement un mouvement financier.
+                    </p>
+
+                </div>
+
+            </header>
+
+
+            <section class="form-card">
+
+                <form>
+
+                    <div class="form-group">
+
+                        <label>
+                            Type de transaction
+                        </label>
+
+                        <div class="choice-group">
+
+                            <label class="choice">
+
+                                <input
+                                    type="radio"
+                                    name="type"
+                                    value="income"
+                                    checked
+                                >
+
+                                <span>
+                                    Revenu
+                                </span>
+
+                            </label>
+
+
+                            <label class="choice">
+
+                                <input
+                                    type="radio"
+                                    name="type"
+                                    value="expense"
+                                >
+
+                                <span>
+                                    Dépense
+                                </span>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="description">
+                            Description
+                        </label>
+
+                        <input
+                            type="text"
+                            id="description"
+                            placeholder="Ex : Salaire"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="amount">
+                                Montant
+                            </label>
+
+                            <input
+                                type="number"
+                                id="amount"
+                                placeholder="0"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="category">
+                                Catégorie
+                            </label>
+
+                            <select id="category">
+
+                                <option>
+                                    Travail
+                                </option>
+
+                                <option>
+                                    Alimentation
+                                </option>
+
+                                <option>
+                                    Transport
+                                </option>
+
+                                <option>
+                                    Autre
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="date">
+                            Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="date"
+                        >
+
+                    </div>
+
+
+                    <div class="form-actions">
+
+                        <a href="transactions.html" class="button button-secondary">
+                            Annuler
+                        </a>
+
+                        <button
+                            type="submit"
+                            class="button button-primary"
+                        >
+                            Enregistrer
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>

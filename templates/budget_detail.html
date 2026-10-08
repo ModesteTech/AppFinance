@@ -1,3 +1,176 @@
 <!DOCTYPE html>
-<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Détail du budget — WANDJI FINANCE</title><link rel="stylesheet" href="../static/css/base.css"><link rel="stylesheet" href="../static/css/budgets.css"></head>
-<body class="app-page"><header class="app-header"><div class="container nav-container"><a class="brand" href="dashboard.html"><span class="brand-mark">W</span><span>WANDJI FINANCE</span></a></div></header><main class="detail-main"><div class="container"><a class="back-link" href="budgets.html">← Retour aux budgets</a><div class="detail-header"><div><span class="category-icon">🍲</span><div><span class="eyebrow">BUDGET</span><h1>Alimentation</h1><p>Du 1er au 31 octobre 2026</p></div></div><a class="btn btn-outline" href="budgets.html">Modifier</a></div><section class="panel budget-detail-card"><div class="detail-number"><span>Dépensé</span><strong>72 000 FCFA</strong><small>sur 100 000 FCFA</small></div><div class="big-progress"><i style="width:72%"></i></div><div class="detail-meta"><span>72% utilisé</span><b class="positive">28 000 FCFA restants</b></div></section><section class="panel"><div class="panel-heading"><div><h2>Dépenses associées</h2><p>Les opérations de cette catégorie</p></div></div><div class="activity-list"><div class="activity"><span class="activity-icon expense">↘</span><div><strong>Courses</strong><small>07 oct. 2026</small></div><b class="negative">-18 500</b></div><div class="activity"><span class="activity-icon expense">↘</span><div><strong>Marché</strong><small>04 oct. 2026</small></div><b class="negative">-23 500</b></div></div></section></div></main></body></html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Détail du budget - WANDJI FINANCE</title>
+
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/budgets.css">
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+
+                <a href="dashboard.html" class="logo">
+                    <span class="logo-mark">W</span>
+                    <span class="logo-text">WANDJI FINANCE</span>
+                </a>
+
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="dashboard.html">Tableau de bord</a>
+                <a href="transactions.html">Transactions</a>
+                <a href="budgets.html" class="active">Budgets</a>
+                <a href="goals.html">Objectifs</a>
+                <a href="profile.html">Profil</a>
+                <a href="settings.html">Paramètres</a>
+
+            </nav>
+
+        </aside>
+
+
+        <main class="dashboard-main">
+
+            <header class="page-header">
+
+                <div>
+
+                    <a href="budgets.html">
+                        ← Retour aux budgets
+                    </a>
+
+                    <h1>
+                        Budget Alimentation
+                    </h1>
+
+                    <p>
+                        Octobre 2026
+                    </p>
+
+                </div>
+
+            </header>
+
+
+            <section class="budget-detail-card">
+
+                <div class="budget-detail-total">
+
+                    <span>
+                        Dépensé
+                    </span>
+
+                    <strong>
+                        62 000 FCFA
+                    </strong>
+
+                    <p>
+                        sur un budget de 100 000 FCFA
+                    </p>
+
+                </div>
+
+
+                <div class="progress large-progress">
+
+                    <span style="width: 62%;"></span>
+
+                </div>
+
+
+                <div class="budget-detail-stats">
+
+                    <div>
+                        <span>Budget total</span>
+                        <strong>100 000 FCFA</strong>
+                    </div>
+
+                    <div>
+                        <span>Dépensé</span>
+                        <strong>62 000 FCFA</strong>
+                    </div>
+
+                    <div>
+                        <span>Restant</span>
+                        <strong>38 000 FCFA</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="dashboard-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2>
+                            Dépenses associées
+                        </h2>
+
+                        <p>
+                            Les dépenses de la catégorie alimentation.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Description</th>
+                                <th>Date</th>
+                                <th>Montant</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>Courses</td>
+                                <td>07/10/2026</td>
+                                <td class="expense">18 500 FCFA</td>
+                            </tr>
+
+                            <tr>
+                                <td>Restaurant</td>
+                                <td>04/10/2026</td>
+                                <td class="expense">12 000 FCFA</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>

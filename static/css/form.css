@@ -1,2 +1,134 @@
-.form-main{padding:45px 0 80px}.form-header{margin-bottom:25px}.form-header h1{font-size:36px}.form-header p{margin-top:7px}.form-card{padding:30px}.form-card .form-actions{border-top:1px solid var(--border);padding-top:20px;margin-top:8px}.type-selector{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}.type-selector label{margin:0}.type-selector label span{display:block;padding:15px;border:1px solid var(--border);border-radius:12px;text-align:center;color:var(--green)}.type-selector input{display:none}.type-selector input:checked+span{background:var(--green-light);border-color:var(--green);font-weight:800}
-@media(max-width:600px){.form-actions{flex-direction:column}.form-actions .btn{width:100%}}
+.form-card {
+    max-width: 800px;
+
+    padding: 30px;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+}
+
+
+.form-card h2 {
+    margin-bottom: 25px;
+}
+
+
+.form-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+
+.form-card .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+.form-card label {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+.form-card input,
+.form-card select,
+.form-card textarea {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    outline: none;
+
+    background: var(--white);
+}
+
+
+.form-card input:focus,
+.form-card select:focus,
+.form-card textarea:focus {
+    border-color: var(--green);
+}
+
+
+.form-card textarea {
+    min-height: 130px;
+
+    resize: vertical;
+}
+
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 18px;
+}
+
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    padding-top: 10px;
+}
+
+
+.choice-group {
+    display: flex;
+    gap: 12px;
+}
+
+
+.choice {
+    flex: 1;
+
+    padding: 15px;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    cursor: pointer;
+}
+
+
+.choice input {
+    width: auto;
+}
+
+
+@media (max-width: 600px) {
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .form-card {
+        padding: 20px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions .button {
+        width: 100%;
+    }
+
+}

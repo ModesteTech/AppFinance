@@ -1,5 +1,195 @@
 <!DOCTYPE html>
-<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Dépenses — WANDJI FINANCE</title><link rel="stylesheet" href="../static/css/base.css"><link rel="stylesheet" href="../static/css/finance.css"></head>
-<body class="app-page"><header class="app-header"><div class="container nav-container"><a class="brand" href="dashboard.html"><span class="brand-mark">W</span><span>WANDJI FINANCE</span></a><div class="header-actions"><a href="notifications.html">◔</a><a href="profile.html" class="user-avatar">M</a></div></div></header>
-<div class="app-layout"><aside class="sidebar"><nav><span class="side-label">PRINCIPAL</span><a href="dashboard.html">▦ Tableau de bord</a><a href="transactions.html">↔ Transactions</a><a href="statistics.html">◒ Statistiques</a><span class="side-label">FINANCES</span><a href="revenues.html">↗ Revenus</a><a class="active" href="expenses.html">↘ Dépenses</a><a href="budgets.html">▤ Budgets</a><a href="goals.html">◎ Objectifs</a><span class="side-label">COMPTE</span><a href="profile.html">◯ Profil</a><a href="notifications.html">◔ Notifications</a><a href="settings.html">⚙ Paramètres</a></nav></aside>
-<main class="dashboard-main"><div class="container"><div class="page-header"><div><span class="eyebrow">FINANCES</span><h1>Dépenses</h1><p>Comprenez et contrôlez vos sorties d'argent.</p></div><a class="btn btn-primary" href="add_expense.html">+ Ajouter une dépense</a></div><div class="summary-row"><div><span>Total ce mois</span><strong class="negative">256 500 FCFA</strong></div><div><span>Nombre d'opérations</span><strong>18</strong></div><div><span>Moyenne</span><strong>14 250 FCFA</strong></div></div><section class="panel table-panel"><div class="filters"><input type="search" placeholder="Rechercher une dépense..."><select><option>Toutes les catégories</option><option>Alimentation</option><option>Transport</option><option>Loisirs</option></select><select><option>Ce mois</option><option>3 derniers mois</option></select></div><div class="table-wrap"><table><thead><tr><th>Description</th><th>Catégorie</th><th>Date</th><th>Montant</th><th></th></tr></thead><tbody><tr><td><strong>Courses</strong><small>Supermarché</small></td><td>Alimentation</td><td>07 oct. 2026</td><td class="negative">-18 500 FCFA</td><td>•••</td></tr><tr><td><strong>Taxi</strong><small>Déplacement</small></td><td>Transport</td><td>05 oct. 2026</td><td class="negative">-12 000 FCFA</td><td>•••</td></tr><tr><td><strong>Internet</strong><small>Forfait mensuel</small></td><td>Abonnements</td><td>02 oct. 2026</td><td class="negative">-15 000 FCFA</td><td>•••</td></tr></tbody></table></div></section></div></main></div></body></html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dépenses - WANDJI FINANCE</title>
+
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/finance.css">
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+
+                <a href="dashboard.html" class="logo">
+                    <span class="logo-mark">W</span>
+                    <span class="logo-text">WANDJI FINANCE</span>
+                </a>
+
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="dashboard.html">
+                    Tableau de bord
+                </a>
+
+                <a href="transactions.html">
+                    Transactions
+                </a>
+
+                <a href="statistics.html">
+                    Statistiques
+                </a>
+
+                <a href="revenues.html">
+                    Revenus
+                </a>
+
+                <a href="expenses.html" class="active">
+                    Dépenses
+                </a>
+
+                <a href="budgets.html">
+                    Budgets
+                </a>
+
+                <a href="goals.html">
+                    Objectifs
+                </a>
+
+                <a href="profile.html">
+                    Profil
+                </a>
+
+                <a href="notifications.html">
+                    Notifications
+                </a>
+
+                <a href="settings.html">
+                    Paramètres
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+        <main class="dashboard-main">
+
+            <header class="page-header">
+
+                <div>
+
+                    <span class="dashboard-label">
+                        FINANCES
+                    </span>
+
+                    <h1>
+                        Dépenses
+                    </h1>
+
+                    <p>
+                        Suivez et analysez vos dépenses.
+                    </p>
+
+                </div>
+
+                <a href="add_expense.html" class="button button-primary">
+                    + Ajouter une dépense
+                </a>
+
+            </header>
+
+
+            <section class="summary-grid">
+
+                <div class="summary-card">
+                    <span>Total ce mois</span>
+                    <strong>256 500 FCFA</strong>
+                </div>
+
+                <div class="summary-card">
+                    <span>Nombre de dépenses</span>
+                    <strong>24</strong>
+                </div>
+
+                <div class="summary-card">
+                    <span>Dépense moyenne</span>
+                    <strong>10 688 FCFA</strong>
+                </div>
+
+            </section>
+
+
+            <section class="dashboard-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2>
+                            Liste des dépenses
+                        </h2>
+
+                        <p>
+                            Octobre 2026
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Description</th>
+                                <th>Catégorie</th>
+                                <th>Date</th>
+                                <th>Montant</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>Courses</td>
+                                <td>Alimentation</td>
+                                <td>07/10/2026</td>
+                                <td class="expense">18 500 FCFA</td>
+                            </tr>
+
+                            <tr>
+                                <td>Transport</td>
+                                <td>Transport</td>
+                                <td>06/10/2026</td>
+                                <td class="expense">7 500 FCFA</td>
+                            </tr>
+
+                            <tr>
+                                <td>Internet</td>
+                                <td>Abonnements</td>
+                                <td>04/10/2026</td>
+                                <td class="expense">15 000 FCFA</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>

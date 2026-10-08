@@ -1,3 +1,229 @@
 <!DOCTYPE html>
-<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Statistiques — WANDJI FINANCE</title><link rel="stylesheet" href="../static/css/base.css"><link rel="stylesheet" href="../static/css/statistics.css"></head>
-<body class="app-page"><header class="app-header"><div class="container nav-container"><a class="brand" href="dashboard.html"><span class="brand-mark">W</span><span>WANDJI FINANCE</span></a><a href="profile.html" class="user-avatar">M</a></div></header><main class="statistics-main"><div class="container"><div class="page-header"><div><span class="eyebrow">ANALYSE</span><h1>Statistiques</h1><p>Comprenez les tendances de vos finances.</p></div><select class="period-select"><option>Octobre 2026</option><option>Septembre 2026</option><option>Cette année</option></select></div><div class="stats-grid"><div class="stat-card"><span>Revenus</span><strong class="positive">685 000 FCFA</strong><small>+12,2% vs période précédente</small></div><div class="stat-card"><span>Dépenses</span><strong class="negative">256 500 FCFA</strong><small>+3,7% vs période précédente</small></div><div class="stat-card"><span>Épargne</span><strong>124 000 FCFA</strong><small>18,1% des revenus</small></div></div><div class="statistics-grid"><section class="panel"><div class="panel-heading"><div><h2>Revenus vs dépenses</h2><p>Évolution mensuelle</p></div></div><div class="large-chart"><div class="chart-bars"><i style="height:45%"></i><i style="height:60%"></i><i style="height:55%"></i><i style="height:75%"></i><i style="height:65%"></i><i style="height:88%"></i><i style="height:92%"></i></div></div></section><section class="panel"><div class="panel-heading"><div><h2>Dépenses par catégorie</h2><p>Répartition actuelle</p></div></div><div class="donut"><div><strong>256 500</strong><span>FCFA</span></div></div><ul class="legend"><li><span></span>Alimentation <b>35%</b></li><li><span></span>Transport <b>22%</b></li><li><span></span>Abonnements <b>18%</b></li><li><span></span>Loisirs <b>12%</b></li></ul></section></div></div></main></body></html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Statistiques - WANDJI FINANCE</title>
+
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/statistics.css">
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+
+                <a href="dashboard.html" class="logo">
+                    <span class="logo-mark">W</span>
+                    <span class="logo-text">WANDJI FINANCE</span>
+                </a>
+
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="dashboard.html">Tableau de bord</a>
+                <a href="transactions.html">Transactions</a>
+                <a href="statistics.html" class="active">Statistiques</a>
+                <a href="revenues.html">Revenus</a>
+                <a href="expenses.html">Dépenses</a>
+                <a href="budgets.html">Budgets</a>
+                <a href="goals.html">Objectifs</a>
+                <a href="profile.html">Profil</a>
+                <a href="settings.html">Paramètres</a>
+
+            </nav>
+
+        </aside>
+
+
+        <main class="dashboard-main">
+
+            <header class="page-header">
+
+                <div>
+
+                    <span class="dashboard-label">
+                        ANALYSE
+                    </span>
+
+                    <h1>
+                        Statistiques
+                    </h1>
+
+                    <p>
+                        Comprenez l'évolution de vos finances.
+                    </p>
+
+                </div>
+
+            </header>
+
+
+            <section class="statistics-grid">
+
+                <article class="dashboard-card statistics-chart">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h2>
+                                Revenus vs dépenses
+                            </h2>
+
+                            <p>
+                                Évolution sur les six derniers mois.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="bar-chart">
+
+                        <div class="bar-group">
+                            <span class="bar income-bar" style="height: 70%;"></span>
+                            <span class="bar expense-bar" style="height: 35%;"></span>
+                            <small>Mai</small>
+                        </div>
+
+                        <div class="bar-group">
+                            <span class="bar income-bar" style="height: 60%;"></span>
+                            <span class="bar expense-bar" style="height: 40%;"></span>
+                            <small>Juin</small>
+                        </div>
+
+                        <div class="bar-group">
+                            <span class="bar income-bar" style="height: 75%;"></span>
+                            <span class="bar expense-bar" style="height: 45%;"></span>
+                            <small>Juil.</small>
+                        </div>
+
+                        <div class="bar-group">
+                            <span class="bar income-bar" style="height: 80%;"></span>
+                            <span class="bar expense-bar" style="height: 50%;"></span>
+                            <small>Août</small>
+                        </div>
+
+                        <div class="bar-group">
+                            <span class="bar income-bar" style="height: 65%;"></span>
+                            <span class="bar expense-bar" style="height: 42%;"></span>
+                            <small>Sept.</small>
+                        </div>
+
+                        <div class="bar-group">
+                            <span class="bar income-bar" style="height: 90%;"></span>
+                            <span class="bar expense-bar" style="height: 55%;"></span>
+                            <small>Oct.</small>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h2>
+                                Répartition des dépenses
+                            </h2>
+
+                            <p>
+                                Ce mois-ci
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="donut-placeholder">
+                        256 500 FCFA
+                    </div>
+
+
+                    <ul class="legend">
+
+                        <li>
+                            <span>Alimentation</span>
+                            <strong>32 %</strong>
+                        </li>
+
+                        <li>
+                            <span>Transport</span>
+                            <strong>18 %</strong>
+                        </li>
+
+                        <li>
+                            <span>Logement</span>
+                            <strong>25 %</strong>
+                        </li>
+
+                        <li>
+                            <span>Autres</span>
+                            <strong>25 %</strong>
+                        </li>
+
+                    </ul>
+
+                </article>
+
+            </section>
+
+
+            <section class="dashboard-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2>
+                            Résumé financier
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="analysis-grid">
+
+                    <div>
+                        <span>Taux d'épargne</span>
+                        <strong>18,1 %</strong>
+                    </div>
+
+                    <div>
+                        <span>Dépense principale</span>
+                        <strong>Alimentation</strong>
+                    </div>
+
+                    <div>
+                        <span>Évolution du solde</span>
+                        <strong>+8,4 %</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>
