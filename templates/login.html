@@ -7,8 +7,8 @@
 
     <title>Connexion - WANDJI FINANCE</title>
 
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/base.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/auth.css')}}">
 </head>
 
 <body>
@@ -19,7 +19,7 @@
 
             <div class="auth-brand">
 
-                <a href="index.html" class="logo">
+                <a href="{{url_for('dashboard')}}" class="logo">
                     <span class="logo-mark">W</span>
                     <span class="logo-text">WANDJI FINANCE</span>
                 </a>
@@ -102,7 +102,7 @@
                         </label>
 
 
-                        <a href="forgot_password.html">
+                        <a href="{{url_for('forgot_password')}}">
                             Mot de passe oublié ?
                         </a>
 
@@ -123,7 +123,7 @@
 
                     <p>
                         Vous n'avez pas encore de compte ?
-                        <a href="register.html">
+                        <a href="{{url_for('register')}}">
                             Créer un compte
                         </a>
                     </p>

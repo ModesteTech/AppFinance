@@ -7,8 +7,8 @@
 
     <title>Tableau de bord - WANDJI FINANCE</title>
 
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/base.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/dashboard.css')}}">
 </head>
 
 <body>
@@ -19,7 +19,7 @@
 
             <div class="sidebar-logo">
 
-                <a href="dashboard.html" class="logo">
+                <a href="{{url_for('dashboard')}}" class="logo">
                     <span class="logo-mark">W</span>
                     <span class="logo-text">WANDJI FINANCE</span>
                 </a>
@@ -33,15 +33,15 @@
                     PRINCIPAL
                 </span>
 
-                <a href="dashboard.html" class="active">
+                <a href="{{url_for('dashboard')}}" class="active">
                     Tableau de bord
                 </a>
 
-                <a href="transactions.html">
+                <a href="{{url_for('transactions')}}">
                     Transactions
                 </a>
 
-                <a href="statistics.html">
+                <a href="{{url_for('statitics')}}">
                     Statistiques
                 </a>
 
@@ -50,19 +50,19 @@
                     FINANCES
                 </span>
 
-                <a href="revenues.html">
+                <a href="{{url_for('revenues')}}">
                     Revenus
                 </a>
 
-                <a href="expenses.html">
+                <a href="{{url_for('expenses')}}">
                     Dépenses
                 </a>
 
-                <a href="budgets.html">
+                <a href="{{url_for('budgets')}}">
                     Budgets
                 </a>
 
-                <a href="goals.html">
+                <a href="{{url_for('goals')}}">
                     Objectifs
                 </a>
 
@@ -71,15 +71,15 @@
                     COMPTE
                 </span>
 
-                <a href="profile.html">
+                <a href="{{url_for('profile')}}">
                     Profil
                 </a>
 
-                <a href="notifications.html">
+                <a href="{{url_for('notifications')}}">
                     Notifications
                 </a>
 
-                <a href="settings.html">
+                <a href="{{url_for('settings')}}">
                     Paramètres
                 </a>
 
@@ -88,11 +88,11 @@
 
             <div class="sidebar-bottom">
 
-                <a href="index.html">
+                <a href="{{url_for('dashboard')}}">
                     Retour au site
                 </a>
 
-                <a href="login.html">
+                <a href="{{url_for('login')}}">
                     Déconnexion
                 </a>
 
@@ -122,7 +122,7 @@
                 </div>
 
 
-                <a href="add_transaction.html" class="button button-primary">
+                <a href="{{url_for('add_transaction')}}" class="button button-primary">
                     + Nouvelle transaction
                 </a>
 
@@ -266,7 +266,7 @@
 
                         </div>
 
-                        <a href="transactions.html">
+                        <a href="{{url_for('transactions')}}">
                             Voir tout
                         </a>
 
@@ -354,7 +354,7 @@
 
                     </div>
 
-                    <a href="goals.html">
+                    <a href="{{url_for('goals')}}">
                         Voir les objectifs
                     </a>
 

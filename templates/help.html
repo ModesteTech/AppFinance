@@ -7,8 +7,8 @@
 
     <title>Aide - WANDJI FINANCE</title>
 
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/help.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/base.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/help.css')}}">
 </head>
 
 <body>
@@ -17,26 +17,26 @@
 
         <div class="container header-content">
 
-            <a href="index.html" class="logo">
+            <a href="{{url_for('dashboard')}}" class="logo">
                 <span class="logo-mark">W</span>
                 <span class="logo-text">WANDJI FINANCE</span>
             </a>
 
             <nav class="main-nav">
 
-                <a href="index.html">
+                <a href="{{url_for('dashboard')}}">
                     Accueil
                 </a>
 
-                <a href="about.html">
+                <a href="{{url_for('about')}}">
                     À propos
                 </a>
 
-                <a href="help.html" class="active">
+                <a href="{{url_for('about')}}" class="active">
                     Aide
                 </a>
 
-                <a href="login.html">
+                <a href="{{url_for('login')}}">
                     Connexion
                 </a>
 

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    
     <title>WANDJI FINANCE</title>
 
     <link rel="stylesheet" href="{{url_for('static',filename='css/base.css')}}">
@@ -17,26 +17,26 @@
 
         <div class="container header-content">
 
-            <a href="index.html" class="logo">
+            <a href="{{url_for('dashboard')}}" class="logo">
                 <span class="logo-mark">W</span>
                 <span class="logo-text">WANDJI FINANCE</span>
             </a>
 
             <nav class="main-nav">
 
-                <a href="index.html" class="active">
+                <a href="{{url_for('dashboard')}}" class="active">
                     Accueil
                 </a>
 
-                <a href="about.html">
+                <a href="{{url_for('about')}}">
                     À propos
                 </a>
 
-                <a href="login.html">
+                <a href="{{url_for('login')}}">
                     Connexion
                 </a>
 
-                <a href="register.html" class="nav-button">
+                <a href="{{url_for('register')}}" class="nav-button">
                     Créer un compte
                 </a>
 
@@ -72,11 +72,11 @@
 
                     <div class="hero-actions">
 
-                        <a href="register.html" class="button button-primary">
+                        <a href="{{url_for('register')}}" class="button button-primary">
                             Créer mon espace
                         </a>
 
-                        <a href="login.html" class="button button-secondary">
+                        <a href="{{url_for('login')}}" class="button button-secondary">
                             Se connecter
                         </a>
 
@@ -241,7 +241,7 @@
 
                     </div>
 
-                    <a href="register.html" class="button button-light">
+                    <a href="{{url_for('login')}}" class="button button-light">
                         Commencer
                     </a>
 
@@ -260,7 +260,7 @@
 
             <div class="footer-brand">
 
-                <a href="index.html" class="logo">
+                <a href="{{url_for('dashboard')}}" class="logo">
                     <span class="logo-mark">W</span>
                     <span class="logo-text">
                         WANDJI FINANCE
@@ -276,15 +276,15 @@
 
             <div class="footer-links">
 
-                <a href="about.html">
+                <a href="{{url_for('about')}}">
                     À propos
                 </a>
 
-                <a href="help.html">
+                <a href="{{url_for('help')}}">
                     Aide
                 </a>
 
-                <a href="login.html">
+                <a href="{{url_for('login')}}">
                     Connexion
                 </a>
 
