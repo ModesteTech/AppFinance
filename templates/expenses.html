@@ -20,7 +20,7 @@
 
             <div class="sidebar-logo">
 
-                <a href="dashboard.html" class="logo">
+                <a href="{{url_for('dashboard')}}" class="logo">
                     <span class="logo-mark">W</span>
                     <span class="logo-text">WANDJI FINANCE</span>
                 </a>
@@ -29,43 +29,43 @@
 
             <nav class="sidebar-nav">
 
-                <a href="dashboard.html">
+                <a href="{{url_for('dashboard')}}">
                     Tableau de bord
                 </a>
 
-                <a href="transactions.html">
+                <a href="{{url_for('transactions')}}">
                     Transactions
                 </a>
 
-                <a href="statistics.html">
+                <a href="{{url_for('statistics')}}">
                     Statistiques
                 </a>
 
-                <a href="revenues.html">
+                <a href="{{url_for('revenues')}}">
                     Revenus
                 </a>
 
-                <a href="expenses.html" class="active">
+                <a href="{{url_for('expenses')}}" class="active">
                     Dépenses
                 </a>
 
-                <a href="budgets.html">
+                <a href="{{url_for('budgets')}}">
                     Budgets
                 </a>
 
-                <a href="goals.html">
+                <a href="{{url_for('goals')}}">
                     Objectifs
                 </a>
 
-                <a href="profile.html">
+                <a href="{{url_for('profile')}}">
                     Profil
                 </a>
 
-                <a href="notifications.html">
+                <a href="{{url_for('notifications')}}">
                     Notifications
                 </a>
 
-                <a href="settings.html">
+                <a href="{{url_for('settings')}}">
                     Paramètres
                 </a>
 
@@ -94,7 +94,7 @@
 
                 </div>
 
-                <a href="add_expense.html" class="button button-primary">
+                <a href="{{url_for('add_expense')}}" class="button button-primary">
                     + Ajouter une dépense
                 </a>
 

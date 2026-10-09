@@ -7,9 +7,9 @@
 
     <title>Sécurité - WANDJI FINANCE</title>
 
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/dashboard.css">
-    <link rel="stylesheet" href="css/account.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/base.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/dashboard.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/account.css')}}">
 </head>
 
 <body>
@@ -20,7 +20,7 @@
 
             <div class="sidebar-logo">
 
-                <a href="dashboard.html" class="logo">
+                <a href="{{url_for('dashboard')}}" class="logo">
                     <span class="logo-mark">W</span>
                     <span class="logo-text">WANDJI FINANCE</span>
                 </a>
@@ -29,11 +29,12 @@
 
             <nav class="sidebar-nav">
 
-                <a href="dashboard.html">Tableau de bord</a>
-                <a href="transactions.html">Transactions</a>
-                <a href="profile.html">Profil</a>
-                <a href="security.html" class="active">Sécurité</a>
-                <a href="settings.html">Paramètres</a>
+                <a href="{{url_for('dashboard')}}">Tableau de bord</a>
+                <a href="{{url_for('transactions')}}">Transactions</a>
+                <a href="{{url_for('profile')}}">Profil</a>
+                <a href="{{url_for('security')}}" class="active">Sécurité</a>
+                <a href="{{url_for('settings')}}">Paramètres</a>
+
 
             </nav>
 

@@ -41,7 +41,7 @@ def transactions():
     return render_template("transactions.html")
 
 @app.route("/statistics")
-def statitics():
+def statistics():
     return render_template("statistics.html")
 
 @app.route("/revenues")
@@ -72,11 +72,25 @@ def notifications():
 def settings():
     return render_template("settings.html")
 
+@app.route("/add_revenue")
+def add_revenue():
+    return render_template("add_revenue.html")
 
+@app.route("/add_expense")
+def add_expense():
+    return render_template("add_expense.html")
 
+@app.route("/create_budget")
+def create_budget():
+    return render_template("create_budget.html")
 
+@app.route("/create_goal")
+def create_goal():
+    return render_template("create_goal.html")
 
-
+@app.route("/security")
+def security():
+    return render_template("security.html")
 
 
 if __name__=="__main__":
