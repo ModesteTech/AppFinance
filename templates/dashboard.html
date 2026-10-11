@@ -92,7 +92,7 @@
                     Retour au site
                 </a>
 
-                <a href="{{url_for('login')}}">
+                <a href="{{url_for('deconnexion')}}">
                     Déconnexion
                 </a>
 
@@ -112,7 +112,7 @@
                     </span>
 
                     <h1>
-                        Bonjour, Modeste 👋
+                        Bonjour, {{session["name"]}} 👋
                     </h1>
 
                     <p>

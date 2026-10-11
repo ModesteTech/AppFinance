@@ -1,27 +1,100 @@
-from flask import Flask,render_template,url_for
+from flask import Flask,render_template,url_for,request,redirect,session
+from database import get_connection
+from dotenv import load_dotenv
+import sqlite3,os
 
 app=Flask(__name__)
 
+load_dotenv()
+
+app.secret_key=os.environ["SECRET_KEY"]
+
 @app.route("/")
 def index():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
     return render_template("index.html")
 
-
-@app.route("/about")
-def about():
-    return render_template("about.html")
-
-
-@app.route("/login")
-def login():
-    return render_template("login.html")
-
-@app.route("/register")
+@app.route("/register", methods=["GET", "POST"])
 def register():
+    if request.method == "POST":
+
+        name = request.form.get("fullname").strip()
+        email = request.form.get("email").strip().lower()
+        password = request.form.get("password")
+        confirm_password = request.form.get("confirm-password")
+
+        if not name or not email:
+            erreur = "Nom et email obligatoire !"
+            return render_template("register.html", erreur=erreur)
+        if len(password)<8:
+            erreur="Le mot de passe doit contenir au moins 8 caracteres."
+            return render_template("register.html", erreur=erreur)
+        if password != confirm_password:
+            erreur = "Les mots de passe ne correspondent pas !"
+            return render_template("register.html", erreur=erreur)
+
+        try:
+            with get_connection() as conn:
+                conn.execute("""
+                    INSERT INTO utilisateurs (name, email, password)
+                    VALUES (?, ?, ?)
+                """, (name, email, password))
+
+                user=conn.execute("""
+                SELECT id,name FROM utilisateurs
+                WHERE email=?
+                """,(email,)).fetchone()
+
+                session["utilisateur_id"]=user[0]
+                session["name"]=user[1]
+
+            return redirect(url_for("login"))
+
+        except sqlite3.IntegrityError:
+            erreur = "Cette adresse e-mail est déjà utilisée."
+            return render_template("register.html", erreur=erreur)
+
+        finally:
+            conn.close()
+
     return render_template("register.html")
+
+@app.route("/login",methods=["GET","POST"])
+def login():
+
+    if request.method == "POST":
+        email = request.form.get("email").strip().lower()
+        password = request.form.get("password")
+
+        conn=get_connection()
+
+        user=conn.execute("""
+            SELECT id,name,password FROM utilisateurs
+            WHERE email=?
+        """,(email,)).fetchone()
+
+        conn.close()
+
+        if user is None:
+            erreur="Email ou mot de passe incorrect."
+            return render_template("login.html",erreur=erreur)
+
+        if password != user[2]:
+            erreur="Email ou mot de passe incorrect."
+            return render_template("login.html",erreur=erreur)
+
+        session["utilisateur_id"]=user[0]
+        session["name"]=user[1]
+
+        return redirect(url_for("index"))
+            
+    return render_template("login.html")
 
 @app.route("/dashboard")
 def dashboard():
+    if "utilisateur_id" not in session:
+            return redirect(url_for("login"))
     return render_template("dashboard.html")
 
 @app.route("/help")
@@ -91,6 +164,25 @@ def create_goal():
 @app.route("/security")
 def security():
     return render_template("security.html")
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+@app.route("/deconnexion")
+def deconnexion():
+    session.clear()
+    return redirect(url_for("login"))
+
+@app.route("/budget_detail")
+def budget_detail():
+    return render_template("budget_detail.html")
+
+
+@app.route("/goal_detail")
+def goal_detail():
+    return render_template("goal_detail.html")
+
 
 
 if __name__=="__main__":

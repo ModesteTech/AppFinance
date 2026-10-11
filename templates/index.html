@@ -32,14 +32,21 @@
                     À propos
                 </a>
 
-                <a href="{{url_for('login')}}">
-                    Connexion
-                </a>
+                {%if "utilisateur_id" not in session%}
+                    <a href="{{url_for('login')}}">
+                        Connexion
+                    </a>
+                {%else%}
+                    <a href="{{url_for('deconnexion')}}">
+                        Deconnexion
+                    </a>
+                {%endif%}
 
-                <a href="{{url_for('register')}}" class="nav-button">
-                    Créer un compte
-                </a>
-
+                {%if "utilisateur_id" not in session%}
+                    <a href="{{url_for('register')}}" class="nav-button">
+                        Créer un compte
+                    </a>
+                {%endif%}
             </nav>
 
         </div>
@@ -70,17 +77,25 @@
                         financière au quotidien.
                     </p>
 
-                    <div class="hero-actions">
+                    {%if "utilisateur_id" not in session%}
+                        <div class="hero-actions">
 
-                        <a href="{{url_for('register')}}" class="button button-primary">
-                            Créer mon espace
+                            <a href="{{url_for('register')}}" class="button button-primary">
+                                Créer mon espace
+                            </a>
+
+                            <a href="{{url_for('login')}}" class="button button-secondary">
+                                Se connecter
+                            </a>
+
+                        </div>
+                    {%else%}
+                        <a href="{{url_for('dashboard')}}" class="button button-light"
+                        style="background: var(--green);
+                                color: var(--white);">
+                            Commencer
                         </a>
-
-                        <a href="{{url_for('login')}}" class="button button-secondary">
-                            Se connecter
-                        </a>
-
-                    </div>
+                    {%endif%}
 
                 </div>
 
@@ -107,8 +122,19 @@
 
                         </div>
 
-                        <div class="preview-chart">
-                            <div class="chart-line"></div>
+                        <div class="fake-chart">
+
+                            <div class="chart-bars">
+
+                                <span style="height: 45%;"></span>
+                                <span style="height: 60%;"></span>
+                                <span style="height: 50%;"></span>
+                                <span style="height: 75%;"></span>
+                                <span style="height: 65%;"></span>
+                                <span style="height: 90%;"></span>
+
+                            </div>
+
                         </div>
 
                         <div class="preview-stats">
@@ -284,9 +310,15 @@
                     Aide
                 </a>
 
-                <a href="{{url_for('login')}}">
-                    Connexion
-                </a>
+                {%if "utilisateur_id" not in session%}
+                    <a href="{{url_for('login')}}">
+                        Connexion
+                    </a>
+                {%else%}
+                    <a href="{{url_for('deconnexion')}}">
+                        Deconnexion
+                    </a>
+                {%endif%}
 
             </div>
 
