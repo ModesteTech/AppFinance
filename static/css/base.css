@@ -266,6 +266,16 @@ img {
     font-size: 13px;
 }
 
+/* MODIFICATIONS */
+
+.erreur {
+    color: red;
+    margin-top: auto;
+    background-color: rgb(239, 243, 246);
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
 
 @media (max-width: 800px) {
 

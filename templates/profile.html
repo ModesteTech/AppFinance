@@ -76,17 +76,11 @@
 
                 <div class="profile-info">
 
-                    <h2>
-                        Wandji Modeste
-                    </h2>
+                    <h2>{{nom_complet}}</h2>
 
-                    <p>
-                        modeste@example.com
-                    </p>
+                    <p>{{email}}</p>
 
-                    <span>
-                        Membre depuis octobre 2026
-                    </span>
+                    <span>Membre depuis {{date_creation}}</span>
 
                 </div>
 
@@ -95,7 +89,7 @@
 
             <section class="form-card">
 
-                <form>
+                <form method="POST">
 
                     <div class="form-group">
 
@@ -103,10 +97,11 @@
                             Nom complet
                         </label>
 
-                        <input
+                        <input class="name"
                             type="text"
                             id="name"
-                            value="Wandji Modeste"
+                            name="name"
+                            placeholder="Modifier le nom"
                         >
 
                     </div>
@@ -121,7 +116,8 @@
                         <input
                             type="email"
                             id="email"
-                            value="modeste@example.com"
+                            name="email"
+                            placeholder="Modifier l'email"
                         >
 
                     </div>

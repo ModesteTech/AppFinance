@@ -70,7 +70,7 @@
                     Modifier le mot de passe
                 </h2>
 
-                <form>
+                <form method="POST">
 
                     <div class="form-group">
 
@@ -81,9 +81,14 @@
                         <input
                             type="password"
                             id="current"
+                            name="current"
                         >
 
                     </div>
+
+                    {%if same==0 %}
+                    <p class="erreur">{{message}}</p>
+                    {%endif%}
 
 
                     <div class="form-group">
@@ -95,6 +100,7 @@
                         <input
                             type="password"
                             id="new-password"
+                            name="new-password"
                         >
 
                     </div>
@@ -109,10 +115,19 @@
                         <input
                             type="password"
                             id="confirm"
+                            name="confirm"
                         >
 
                     </div>
 
+                    {%if same==1%}
+                    <p class="erreur" style="color: green;">{{message}}</p>
+                    {%elif same==3 %}
+                    <p class="erreur">{{message}}</p>
+                    {%else%}
+                    <p class="erreur">{{message}}</p>
+                    {%endif%}
+                    
 
                     <button
                         type="submit"

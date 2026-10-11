@@ -99,6 +99,8 @@ def dashboard():
 
 @app.route("/help")
 def help():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
     return render_template("help.html")
 
 @app.route("/forgot_password")
@@ -107,66 +109,175 @@ def forgot_password():
 
 @app.route("/add_transaction")
 def add_transaction():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
     return render_template("add_transaction.html")
 
 @app.route("/transactions")
 def transactions():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
     return render_template("transactions.html")
 
 @app.route("/statistics")
 def statistics():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
     return render_template("statistics.html")
 
 @app.route("/revenues")
 def revenues():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
     return render_template("revenues.html")
 
 @app.route("/expenses")
 def expenses():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
     return render_template("expenses.html")
 
 @app.route("/budgets")
 def budgets():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
     return render_template("budgets.html")
 
 @app.route("/goals")
 def goals():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
     return render_template("goals.html")
 
-@app.route("/profile")
+@app.route("/profile", methods=["GET","POST"])
 def profile():
-    return render_template("profile.html")
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
+
+    conn=get_connection()
+
+    if request.method=="POST":
+        nom_complet=request.form.get("name").strip()
+        email=request.form.get("email").strip().lower()
+
+        if email=="":
+            email=conn.execute("""SELECT email FROM utilisateurs WHERE id=?""",(session["utilisateur_id"],)).fetchone()[0]
+        if nom_complet=="":
+            nom_complet=session["name"]
+
+        conn.execute("""
+            UPDATE utilisateurs
+            SET name=?, email=?
+            WHERE id=?
+        """,(nom_complet,email,session["utilisateur_id"],))
+
+        conn.commit()
+
+    user=conn.execute("""
+        SELECT name,email,date_creation
+        FROM utilisateurs
+        WHERE id=?
+    """,(session["utilisateur_id"],)).fetchone()
+
+    nom_complet=user[0]
+    email=user[1]
+    date_creation=user[2].split(" ")[0]
+
+    conn.close()
+
+    return render_template("profile.html",
+                            nom_complet=nom_complet,
+                            email=email,
+                            date_creation=date_creation)
 
 @app.route("/notifications")
 def notifications():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
     return render_template("notifications.html")
 
 @app.route("/settings")
 def settings():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
     return render_template("settings.html")
 
 @app.route("/add_revenue")
 def add_revenue():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
     return render_template("add_revenue.html")
 
 @app.route("/add_expense")
 def add_expense():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
     return render_template("add_expense.html")
 
 @app.route("/create_budget")
 def create_budget():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
     return render_template("create_budget.html")
 
 @app.route("/create_goal")
 def create_goal():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
     return render_template("create_goal.html")
 
-@app.route("/security")
+@app.route("/security", methods=["GET","POST"])
 def security():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
+
+    if request.method=="POST":
+        current=request.form.get("current")
+        new_password=request.form.get("new-password")
+        confirm=request.form.get("confirm")
+
+        conn=get_connection()
+
+        verified=conn.execute("""
+            SELECT password FROM utilisateurs
+            WHERE id= ?
+        """,(session["utilisateur_id"],)).fetchone()[0]
+
+        if verified==current:
+            if len(new_password)>8:
+                same=1
+                if new_password==confirm:
+                    conn.execute("""
+                        UPDATE utilisateurs
+                        SET password = ?
+                        WHERE id = ?
+                    """,(new_password,session["utilisateur_id"],))
+
+                    conn.commit()
+                    conn.close()
+
+                    
+                    succes="Mot de passe modifie avec succes"
+                    return render_template("security.html",message=succes,same=same)
+                else:
+                    same=2
+                    erreur="Les mots de passes ne correspondent pas"
+                    return render_template("security.html",message=erreur,same=same)
+            else:
+                        same=3
+                        erreur="Le mot de passe doit avoir au moins 8 caracteres"
+                        return render_template("security.html",message=erreur,same=same)
+        else:
+            same=0
+            erreur="Mauvais mot de passe"
+            return render_template("security.html",message=erreur,same=same)
+    
     return render_template("security.html")
 
 @app.route("/about")
 def about():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
     return render_template("about.html")
 
 @app.route("/deconnexion")
@@ -176,11 +287,15 @@ def deconnexion():
 
 @app.route("/budget_detail")
 def budget_detail():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
     return render_template("budget_detail.html")
 
 
 @app.route("/goal_detail")
 def goal_detail():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
     return render_template("goal_detail.html")
 
 
