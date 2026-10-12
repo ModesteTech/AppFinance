@@ -107,16 +107,56 @@ def help():
 def forgot_password():
     return render_template("forgot_password.html")
 
-@app.route("/add_transaction")
+@app.route("/add_transaction", methods=["GET","POST"])
 def add_transaction():
     if "utilisateur_id" not in session:
         return redirect(url_for("login"))
+
+    if request.method=="POST":
+        check = request.form.get("type")
+        description=request.form.get("description")
+        montant=request.form.get("amount")
+        categorie=request.form.get("category")
+        date=request.form.get("date")
+        note=request.form.get("note","")
+
+        conn=get_connection()
+
+        if check=="revenu":
+            conn.execute("""
+                    INSERT INTO revenues (utilisateur_id,montant,description,note,date_revenu)
+                    VALUES(?,?,?,?,?)
+                """,(session["utilisateur_id"],montant,description,note,date))
+    
+            conn.execute("""
+                    INSERT INTO categories (utilisateur_id,nom,type)
+                    VALUES(?,?,?)
+                """,(session["utilisateur_id"],categorie,"revenu"))
+            conn.commit()
+
+        elif check=="expense":
+            conn.execute("""
+                    INSERT INTO depenses (utilisateur_id,montant,description,note,date_depense)
+                    VALUES(?,?,?,?,?)
+            """,(session["utilisateur_id"],montant,description,note,date))
+
+            conn.execute("""
+                        INSERT INTO categories (utilisateur_id,nom,type)
+                        VALUES(?,?,?)
+                    """,(session["utilisateur_id"],categorie,"depense"))
+                    
+            conn.commit()
+        
+        conn.close()
+
+        
     return render_template("add_transaction.html")
 
 @app.route("/transactions")
 def transactions():
     if "utilisateur_id" not in session:
         return redirect(url_for("login"))
+    
     return render_template("transactions.html")
 
 @app.route("/statistics")
@@ -202,16 +242,65 @@ def settings():
         return redirect(url_for("login"))
     return render_template("settings.html")
 
-@app.route("/add_revenue")
+@app.route("/add_revenue", methods=["GET","POST"])
 def add_revenue():
     if "utilisateur_id" not in session:
         return redirect(url_for("login"))
+
+    if request.method=="POST":
+        description=request.form.get("description")
+        montant=request.form.get("amount")
+        categorie=request.form.get("category")
+        date=request.form.get("date")
+        note=request.form.get("note","")
+
+        conn=get_connection()
+    
+        conn.execute("""
+                    INSERT INTO revenues (utilisateur_id,montant,description,note,date_revenu)
+                    VALUES(?,?,?,?,?)
+                """,(session["utilisateur_id"],montant,description,note,date))
+    
+        conn.execute("""
+                    INSERT INTO categories (utilisateur_id,nom,type)
+                    VALUES(?,?,?)
+                """,(session["utilisateur_id"],categorie,"revenu"))
+                    
+        conn.commit()
+
+        conn.close()
+
     return render_template("add_revenue.html")
 
-@app.route("/add_expense")
+@app.route("/add_expense", methods=["GET","POST"])
 def add_expense():
     if "utilisateur_id" not in session:
         return redirect(url_for("login"))
+
+    if request.method=="POST":
+        description=request.form.get("description")
+        montant=request.form.get("amount")
+        categorie=request.form.get("category")
+        date=request.form.get("date")
+        note=request.form.get("note","")
+
+        conn=get_connection()
+
+        conn.execute("""
+            INSERT INTO depenses (utilisateur_id,montant,description,note,date_depense)
+            VALUES(?,?,?,?,?)
+        """,(session["utilisateur_id"],montant,description,note,date))
+
+        conn.execute("""
+                    INSERT INTO categories (utilisateur_id,nom,type)
+                    VALUES(?,?,?)
+                """,(session["utilisateur_id"],categorie,"depense"))
+                
+        conn.commit()
+
+        conn.close()
+
+    
     return render_template("add_expense.html")
 
 @app.route("/create_budget")

@@ -68,7 +68,7 @@
 
             <section class="form-card">
 
-                <form>
+                <form method="POST">
 
                     <div class="form-group">
 
@@ -79,6 +79,7 @@
                         <input
                             type="text"
                             id="description"
+                            name="description"
                             placeholder="Ex : Salaire"
                             required
                         >
@@ -97,6 +98,7 @@
                             <input
                                 type="number"
                                 id="amount"
+                                name="amount"
                                 placeholder="0"
                                 required
                             >
@@ -110,7 +112,7 @@
                                 Catégorie
                             </label>
 
-                            <select id="category">
+                            <select id="category" name="category">
 
                                 <option>
                                     Salaire
@@ -144,6 +146,7 @@
                         <input
                             type="date"
                             id="date"
+                            name="date"
                         >
 
                     </div>
@@ -158,6 +161,7 @@
                         <textarea
                             id="note"
                             placeholder="Informations supplémentaires..."
+                            name="note"
                         ></textarea>
 
                     </div>
