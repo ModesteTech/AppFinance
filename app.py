@@ -107,6 +107,15 @@ def help():
 def forgot_password():
     return render_template("forgot_password.html")
 
+
+@app.route("/transactions")
+def transactions():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
+
+    
+    return render_template("transactions.html")
+
 @app.route("/add_transaction", methods=["GET","POST"])
 def add_transaction():
     if "utilisateur_id" not in session:
@@ -152,13 +161,6 @@ def add_transaction():
         
     return render_template("add_transaction.html")
 
-@app.route("/transactions")
-def transactions():
-    if "utilisateur_id" not in session:
-        return redirect(url_for("login"))
-    
-    return render_template("transactions.html")
-
 @app.route("/statistics")
 def statistics():
     if "utilisateur_id" not in session:
@@ -169,13 +171,148 @@ def statistics():
 def revenues():
     if "utilisateur_id" not in session:
         return redirect(url_for("login"))
-    return render_template("revenues.html")
+
+    conn=get_connection()
+    
+    revenues=conn.execute("""
+            SELECT description,montant,date_revenu,category FROM revenues
+            WHERE utilisateur_id= ?
+    """,(session["utilisateur_id"],)).fetchall()
+
+    argent=conn.execute("""
+                SELECT montant FROM revenues
+                WHERE utilisateur_id= ?
+        """,(session["utilisateur_id"],)).fetchall()
+
+    nbr_revenu=len(argent)
+
+    somme=0
+    for i in range(nbr_revenu):
+        somme=somme+argent[i][0]
+    
+
+    if nbr_revenu==0:
+        revenu_moyen=0
+    else:
+        revenu_moyen=somme/nbr_revenu
+
+    revenu_moyen=round(revenu_moyen,2)
+
+    conn.close()
+
+    return render_template("revenues.html",revenues=revenues,somme=somme,nbr_revenu=nbr_revenu,revenu_moyen=revenu_moyen)
+
+@app.route("/add_revenue", methods=["GET", "POST"])
+def add_revenue():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
+
+    if request.method == "POST":
+
+        description = request.form.get("description")
+        montant = request.form.get("amount")
+        categorie = request.form.get("category")
+        date = request.form.get("date")
+        note = request.form.get("note", "")
+
+        conn = get_connection()
+
+        conn.execute("""
+                    INSERT INTO revenues
+                    (utilisateur_id, montant, description, note, date_revenu, category)
+                    VALUES (?, ?, ?, ?, ?, ?)
+                """, (
+                session["utilisateur_id"],
+                montant,
+                description,
+                note,
+                date,
+                categorie
+            ))
+
+        conn.execute("""
+                    INSERT INTO categories (utilisateur_id, nom, type)
+                    VALUES (?, ?, ?)
+                """, (
+                session["utilisateur_id"],
+                categorie,
+                "revenu"
+            ))
+
+        conn.commit()
+        conn.close()
+
+        return redirect(url_for("revenues"))
+
+    return render_template("add_revenue.html")
 
 @app.route("/expenses")
 def expenses():
     if "utilisateur_id" not in session:
         return redirect(url_for("login"))
-    return render_template("expenses.html")
+
+    conn=get_connection()
+    
+    depenses=conn.execute("""
+            SELECT description,montant,date_depense,category FROM depenses
+            WHERE utilisateur_id= ?
+    """,(session["utilisateur_id"],)).fetchall()
+
+    argent=conn.execute("""
+                SELECT montant FROM depenses
+                WHERE utilisateur_id= ?
+        """,(session["utilisateur_id"],)).fetchall()
+
+    nbr_depense=len(argent)
+
+    somme=0
+    for i in range(nbr_depense):
+        somme=somme+argent[i][0]
+    
+
+    if nbr_depense==0:
+        depense_moyen=0
+    else:
+        depense_moyen=somme/nbr_depense
+
+    depense_moyen=round(depense_moyen,2)
+
+    conn.close()
+
+    return render_template("expenses.html",depenses=depenses,somme=somme,nbr_depense=nbr_depense,depense_moyen=depense_moyen)
+
+@app.route("/add_expense", methods=["GET","POST"])
+def add_expense():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
+
+    if request.method=="POST":
+        description=request.form.get("description")
+        montant=request.form.get("amount")
+        categorie=request.form.get("category")
+        date=request.form.get("date")
+        note=request.form.get("note","")
+
+        conn=get_connection()
+
+        conn.execute("""
+            INSERT INTO depenses (utilisateur_id,montant,description,note,date_depense,category)
+            VALUES(?,?,?,?,?,?)
+        """,(session["utilisateur_id"],montant,description,note,date,categorie))
+
+        conn.execute("""
+                    INSERT INTO categories (utilisateur_id,nom,type)
+                    VALUES(?,?,?)
+                """,(session["utilisateur_id"],categorie,"depense"))
+                
+        conn.commit()
+        conn.close()
+
+        return redirect(url_for("expenses"))
+
+    
+    return render_template("add_expense.html")
+
 
 @app.route("/budgets")
 def budgets():
@@ -242,66 +379,7 @@ def settings():
         return redirect(url_for("login"))
     return render_template("settings.html")
 
-@app.route("/add_revenue", methods=["GET","POST"])
-def add_revenue():
-    if "utilisateur_id" not in session:
-        return redirect(url_for("login"))
 
-    if request.method=="POST":
-        description=request.form.get("description")
-        montant=request.form.get("amount")
-        categorie=request.form.get("category")
-        date=request.form.get("date")
-        note=request.form.get("note","")
-
-        conn=get_connection()
-    
-        conn.execute("""
-                    INSERT INTO revenues (utilisateur_id,montant,description,note,date_revenu)
-                    VALUES(?,?,?,?,?)
-                """,(session["utilisateur_id"],montant,description,note,date))
-    
-        conn.execute("""
-                    INSERT INTO categories (utilisateur_id,nom,type)
-                    VALUES(?,?,?)
-                """,(session["utilisateur_id"],categorie,"revenu"))
-                    
-        conn.commit()
-
-        conn.close()
-
-    return render_template("add_revenue.html")
-
-@app.route("/add_expense", methods=["GET","POST"])
-def add_expense():
-    if "utilisateur_id" not in session:
-        return redirect(url_for("login"))
-
-    if request.method=="POST":
-        description=request.form.get("description")
-        montant=request.form.get("amount")
-        categorie=request.form.get("category")
-        date=request.form.get("date")
-        note=request.form.get("note","")
-
-        conn=get_connection()
-
-        conn.execute("""
-            INSERT INTO depenses (utilisateur_id,montant,description,note,date_depense)
-            VALUES(?,?,?,?,?)
-        """,(session["utilisateur_id"],montant,description,note,date))
-
-        conn.execute("""
-                    INSERT INTO categories (utilisateur_id,nom,type)
-                    VALUES(?,?,?)
-                """,(session["utilisateur_id"],categorie,"depense"))
-                
-        conn.commit()
-
-        conn.close()
-
-    
-    return render_template("add_expense.html")
 
 @app.route("/create_budget")
 def create_budget():

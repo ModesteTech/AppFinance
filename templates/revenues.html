@@ -105,17 +105,17 @@
 
                 <div class="summary-card">
                     <span>Total ce mois</span>
-                    <strong>685 000 FCFA</strong>
+                    <strong>{{somme}} FCFA</strong>
                 </div>
 
                 <div class="summary-card">
                     <span>Nombre de revenus</span>
-                    <strong>8</strong>
+                    <strong>{{nbr_revenu}}</strong>
                 </div>
 
                 <div class="summary-card">
                     <span>Revenu moyen</span>
-                    <strong>85 625 FCFA</strong>
+                    <strong>{{revenu_moyen}} FCFA</strong>
                 </div>
 
             </section>
@@ -139,6 +139,7 @@
 
                 </div>
 
+                {% if revenues %}
 
                 <div class="table-container">
 
@@ -156,33 +157,41 @@
                         </thead>
 
                         <tbody>
+                            {% for revenu in revenues %}
 
                             <tr>
-                                <td>Salaire</td>
-                                <td>Travail</td>
-                                <td>05/10/2026</td>
-                                <td class="income">350 000 FCFA</td>
+                                <td>{{revenu[0]}}</td>
+                                <td>{{revenu[3]}}</td>
+                                <td>{{revenu[2]}}</td>
+                                <td class="income">{{revenu[1]}}</td>
                             </tr>
 
-                            <tr>
-                                <td>Freelance</td>
-                                <td>Activité</td>
-                                <td>03/10/2026</td>
-                                <td class="income">180 000 FCFA</td>
-                            </tr>
-
-                            <tr>
-                                <td>Vente</td>
-                                <td>Commerce</td>
-                                <td>01/10/2026</td>
-                                <td class="income">95 000 FCFA</td>
-                            </tr>
+                            {% endfor %}
 
                         </tbody>
 
                     </table>
-
+                    
                 </div>
+
+                {% else %}
+                <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Description</th>
+                                <th>Catégorie</th>
+                                <th>Date</th>
+                                <th>Montant</th>
+                            </tr>
+
+                        </thead>
+
+                    </table>
+                    <p class="aucun-revenu">Aucun revenu enregistre pour le moment.</p>
+                {% endif %}
+
 
             </section>
 

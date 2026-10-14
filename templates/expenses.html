@@ -105,17 +105,17 @@
 
                 <div class="summary-card">
                     <span>Total ce mois</span>
-                    <strong>256 500 FCFA</strong>
+                    <strong>{{somme}} FCFA</strong>
                 </div>
 
                 <div class="summary-card">
                     <span>Nombre de dépenses</span>
-                    <strong>24</strong>
+                    <strong>{{nbr_depense}}</strong>
                 </div>
 
                 <div class="summary-card">
                     <span>Dépense moyenne</span>
-                    <strong>10 688 FCFA</strong>
+                    <strong>{{depense_moyen}}</strong>
                 </div>
 
             </section>
@@ -139,6 +139,8 @@
 
                 </div>
 
+                {% if depenses %}
+
 
                 <div class="table-container">
 
@@ -157,32 +159,41 @@
 
                         <tbody>
 
-                            <tr>
-                                <td>Courses</td>
-                                <td>Alimentation</td>
-                                <td>07/10/2026</td>
-                                <td class="expense">18 500 FCFA</td>
-                            </tr>
+                            {% for depense in depenses %}
 
                             <tr>
-                                <td>Transport</td>
-                                <td>Transport</td>
-                                <td>06/10/2026</td>
-                                <td class="expense">7 500 FCFA</td>
+                                <td>{{depense[0]}}</td>
+                                <td>{{depense[3]}}</td>
+                                <td>{{depense[2]}}</td>
+                                <td class="expense">{{depense[1]}} FCFA</td>
                             </tr>
 
-                            <tr>
-                                <td>Internet</td>
-                                <td>Abonnements</td>
-                                <td>04/10/2026</td>
-                                <td class="expense">15 000 FCFA</td>
-                            </tr>
+                            {% endfor %}
 
                         </tbody>
 
                     </table>
 
                 </div>
+
+                {% else %}
+                <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Description</th>
+                                <th>Catégorie</th>
+                                <th>Date</th>
+                                <th>Montant</th>
+                            </tr>
+
+                        </thead>
+
+                    </table>
+                    <p class="aucun-revenu">Aucun revenu enregistre pour le moment.</p>
+                {% endif %}
+
 
             </section>
 

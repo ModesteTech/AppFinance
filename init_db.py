@@ -17,6 +17,7 @@ def init_db():
             utilisateur_id INTEGER NOT NULL,
             montant REAL NOT NULL CHECK(montant > 0),
             description TEXT NOT NULL,
+            category TEXT NOT NULL,
             note TEXT,
             date_revenu DATE NOT NULL DEFAULT CURRENT_DATE,
             FOREIGN KEY(utilisateur_id) REFERENCES utilisateurs(id)
@@ -28,6 +29,7 @@ def init_db():
             utilisateur_id INTEGER NOT NULL,
             montant REAL NOT NULL CHECK(montant > 0),
             description TEXT NOT NULL,
+            category TEXT NOT NULL,
             note TEXT,
             date_depense DATE NOT NULL DEFAULT CURRENT_DATE,
             FOREIGN KEY(utilisateur_id) REFERENCES utilisateurs(id)
@@ -40,11 +42,12 @@ def init_db():
             nom TEXT NOT NULL,
             type TEXT NOT NULL CHECK(type IN ('revenu','depense')),
             FOREIGN KEY(utilisateur_id) REFERENCES utilisateurs(id)
-            ON DELETE CASCADE,
-            UNIQUE (utilisateur_id,nom,type)
+            ON DELETE CASCADE
         );
 
     """)
 
     connection.commit()
     connection.close()
+
+init_db()
