@@ -113,8 +113,19 @@ def transactions():
     if "utilisateur_id" not in session:
         return redirect(url_for("login"))
 
-    
-    return render_template("transactions.html")
+    conn=get_connection()
+
+    depenses=conn.execute("""
+        SELECT montant,description,category,date_depense FROM depenses
+        WHERE utilisateur_id= ?
+    """,(session["utilisateur_id"],)).fetchall()
+
+    revenues=conn.execute("""
+            SELECT montant,description,category,date_revenu FROM revenues
+            WHERE utilisateur_id= ?
+        """,(session["utilisateur_id"],)).fetchall()
+
+    return render_template("transactions.html",depenses=depenses,revenues=revenues)
 
 @app.route("/add_transaction", methods=["GET","POST"])
 def add_transaction():
@@ -133,9 +144,9 @@ def add_transaction():
 
         if check=="revenu":
             conn.execute("""
-                    INSERT INTO revenues (utilisateur_id,montant,description,note,date_revenu)
-                    VALUES(?,?,?,?,?)
-                """,(session["utilisateur_id"],montant,description,note,date))
+                    INSERT INTO revenues (utilisateur_id,montant,description,note,date_revenu,category)
+                    VALUES(?,?,?,?,?,?)
+                """,(session["utilisateur_id"],montant,description,note,date,categorie))
     
             conn.execute("""
                     INSERT INTO categories (utilisateur_id,nom,type)
@@ -145,9 +156,9 @@ def add_transaction():
 
         elif check=="expense":
             conn.execute("""
-                    INSERT INTO depenses (utilisateur_id,montant,description,note,date_depense)
-                    VALUES(?,?,?,?,?)
-            """,(session["utilisateur_id"],montant,description,note,date))
+                    INSERT INTO depenses (utilisateur_id,montant,description,note,date_depense,category)
+                    VALUES(?,?,?,?,?,?)
+            """,(session["utilisateur_id"],montant,description,note,date,categorie))
 
             conn.execute("""
                         INSERT INTO categories (utilisateur_id,nom,type)
@@ -160,12 +171,6 @@ def add_transaction():
 
         
     return render_template("add_transaction.html")
-
-@app.route("/statistics")
-def statistics():
-    if "utilisateur_id" not in session:
-        return redirect(url_for("login"))
-    return render_template("statistics.html")
 
 @app.route("/revenues")
 def revenues():
@@ -447,11 +452,6 @@ def about():
         return redirect(url_for("login"))
     return render_template("about.html")
 
-@app.route("/deconnexion")
-def deconnexion():
-    session.clear()
-    return redirect(url_for("login"))
-
 @app.route("/budget_detail")
 def budget_detail():
     if "utilisateur_id" not in session:
@@ -465,7 +465,16 @@ def goal_detail():
         return redirect(url_for("login"))
     return render_template("goal_detail.html")
 
+@app.route("/statistics")
+def statistics():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
+    return render_template("statistics.html")
 
+@app.route("/deconnexion")
+def deconnexion():
+    session.clear()
+    return redirect(url_for("login"))
 
 if __name__=="__main__":
     app.run(debug=True)

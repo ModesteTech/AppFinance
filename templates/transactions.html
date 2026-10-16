@@ -133,7 +133,6 @@
 
                 </div>
 
-
                 <div class="table-container">
 
                     <table>
@@ -150,35 +149,56 @@
 
                         </thead>
 
+                        {% if depenses or revenues %}
+                            
                         <tbody>
 
-                            <tr>
-                                <td>Salaire</td>
-                                <td>Revenu</td>
-                                <td>Travail</td>
-                                <td>05/10/2026</td>
-                                <td class="income">+350 000 FCFA</td>
-                            </tr>
+                            {% if depenses %}
 
+                                {% for depense in depenses %}
                             <tr>
-                                <td>Courses</td>
+                                <td>{{depense[1]}}</td>
+                                <td>Revenu</td>
+                                <td>{{depense[2]}}</td>
+                                <td>{{depense[3]}}</td>
+                                <td class="income">+{{depense[0]}} FCFA</td>
+                            </tr>
+                                {% endfor %}
+                            {% endif %}
+
+                            {% if revenues %}
+                                {% for revenu in revenues %}
+                            <tr>
+                                <td>{{revenu[1]}}</td>
                                 <td>Dépense</td>
-                                <td>Alimentation</td>
-                                <td>07/10/2026</td>
-                                <td class="expense">-18 500 FCFA</td>
+                                <td>{{revenu[2]}}</td>
+                                <td>{{revenu[3]}}</td>
+                                <td class="expense">-{{revenu[0]}} FCFA</td>
                             </tr>
-
-                            <tr>
-                                <td>Freelance</td>
-                                <td>Revenu</td>
-                                <td>Activité</td>
-                                <td>03/10/2026</td>
-                                <td class="income">+180 000 FCFA</td>
-                            </tr>
+                                {% endfor %}
+                            {% endif %}
 
                         </tbody>
-
                     </table>
+
+                        {% else %}
+
+                        <table>
+                            <thead>
+
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Type</th>
+                                    <th>Catégorie</th>
+                                    <th>Date</th>
+                                    <th>Montant</th>
+                                </tr>
+
+                            </thead>
+                        </table>
+                        <p>Vous n'avez aucune transaction pour l'instant</p>
+                        
+                        {% endif %}
 
                 </div>
 
