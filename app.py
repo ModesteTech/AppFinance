@@ -94,18 +94,32 @@ def login():
 @app.route("/dashboard")
 def dashboard():
     if "utilisateur_id" not in session:
-            return redirect(url_for("login"))
-    return render_template("dashboard.html")
-
-@app.route("/help")
-def help():
-    if "utilisateur_id" not in session:
         return redirect(url_for("login"))
-    return render_template("help.html")
 
-@app.route("/forgot_password")
-def forgot_password():
-    return render_template("forgot_password.html")
+    conn=get_connection()
+    
+    depenses=conn.execute("""
+        SELECT montant,description,date_depense FROM depenses
+        WHERE utilisateur_id= ?
+    """,(session["utilisateur_id"],)).fetchall()
+    
+    revenues=conn.execute("""
+            SELECT montant,description,date_revenu FROM revenues
+            WHERE utilisateur_id= ?
+        """,(session["utilisateur_id"],)).fetchall()
+    
+    transactions=[]
+    
+    for depense in depenses:
+        transactions.append((*depense,"Depense"))
+    for revenu in revenues:
+        transactions.append((*revenu,"Revenu"))
+    
+    transactions.sort(key=lambda x: x[2], reverse=True)
+    
+    conn.close()
+
+    return render_template("dashboard.html",transactions=transactions)
 
 
 @app.route("/transactions")
@@ -216,6 +230,8 @@ def revenues():
 
     revenu_moyen=round(revenu_moyen,2)
 
+    revenues.sort(key= lambda t:t[2],reverse=True)
+
     conn.close()
 
     return render_template("revenues.html",revenues=revenues,somme=somme,nbr_revenu=nbr_revenu,revenu_moyen=revenu_moyen)
@@ -295,6 +311,8 @@ def expenses():
 
     depense_moyen=round(depense_moyen,2)
 
+    depenses.sort(key=lambda t: t[2],reverse=True)
+
     conn.close()
 
     return render_template("expenses.html",depenses=depenses,somme=somme,nbr_depense=nbr_depense,depense_moyen=depense_moyen)
@@ -338,11 +356,35 @@ def budgets():
         return redirect(url_for("login"))
     return render_template("budgets.html")
 
+@app.route("/create_budget")
+def create_budget():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
+    return render_template("create_budget.html")
+
+@app.route("/budget_detail")
+def budget_detail():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
+    return render_template("budget_detail.html")
+
 @app.route("/goals")
 def goals():
     if "utilisateur_id" not in session:
         return redirect(url_for("login"))
     return render_template("goals.html")
+
+@app.route("/create_goal")
+def create_goal():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
+    return render_template("create_goal.html")
+
+@app.route("/goal_detail")
+def goal_detail():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
+    return render_template("goal_detail.html")
 
 @app.route("/profile", methods=["GET","POST"])
 def profile():
@@ -385,31 +427,6 @@ def profile():
                             email=email,
                             date_creation=date_creation)
 
-@app.route("/notifications")
-def notifications():
-    if "utilisateur_id" not in session:
-        return redirect(url_for("login"))
-    return render_template("notifications.html")
-
-@app.route("/settings")
-def settings():
-    if "utilisateur_id" not in session:
-        return redirect(url_for("login"))
-    return render_template("settings.html")
-
-
-
-@app.route("/create_budget")
-def create_budget():
-    if "utilisateur_id" not in session:
-        return redirect(url_for("login"))
-    return render_template("create_budget.html")
-
-@app.route("/create_goal")
-def create_goal():
-    if "utilisateur_id" not in session:
-        return redirect(url_for("login"))
-    return render_template("create_goal.html")
 
 @app.route("/security", methods=["GET","POST"])
 def security():
@@ -459,30 +476,39 @@ def security():
     
     return render_template("security.html")
 
-@app.route("/about")
-def about():
-    if "utilisateur_id" not in session:
-        return redirect(url_for("login"))
-    return render_template("about.html")
-
-@app.route("/budget_detail")
-def budget_detail():
-    if "utilisateur_id" not in session:
-        return redirect(url_for("login"))
-    return render_template("budget_detail.html")
-
-
-@app.route("/goal_detail")
-def goal_detail():
-    if "utilisateur_id" not in session:
-        return redirect(url_for("login"))
-    return render_template("goal_detail.html")
-
 @app.route("/statistics")
 def statistics():
     if "utilisateur_id" not in session:
         return redirect(url_for("login"))
     return render_template("statistics.html")
+
+@app.route("/notifications")
+def notifications():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
+    return render_template("notifications.html")
+
+@app.route("/forgot_password")
+def forgot_password():
+    return render_template("forgot_password.html")
+
+@app.route("/settings")
+def settings():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
+    return render_template("settings.html")
+
+@app.route("/help")
+def help():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
+    return render_template("help.html")
+
+@app.route("/about")
+def about():
+    if "utilisateur_id" not in session:
+        return redirect(url_for("login"))
+    return render_template("about.html")
 
 @app.route("/deconnexion")
 def deconnexion():

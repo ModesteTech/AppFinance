@@ -274,61 +274,36 @@
 
                     <div class="transaction-list">
 
+                        {% if transactions %}
+                            {% for transaction in transactions[:3] %}
+
                         <div class="transaction-item">
 
                             <div>
                                 <strong>
-                                    Salaire
+                                    {{transaction[1]}} <!-- Description -->
                                 </strong>
 
                                 <span>
-                                    Aujourd'hui
+                                    {{transaction[3]}} <!-- date -->
                                 </span>
                             </div>
 
+                                {% if transaction[3]== "Revenu" %}
                             <strong class="income">
-                                +350 000 FCFA
+                                +{{transaction[0]}} FCFA <!-- montant -->
                             </strong>
-
-                        </div>
-
-
-                        <div class="transaction-item">
-
-                            <div>
-                                <strong>
-                                    Alimentation
-                                </strong>
-
-                                <span>
-                                    Hier
-                                </span>
-                            </div>
-
+                                {% elif transaction[3]== "Depense" %}
                             <strong class="expense">
-                                -18 500 FCFA
+                                -{{transaction[0]}} FCFA <!-- montant -->
                             </strong>
+                                {% endif %}
 
                         </div>
-
-
-                        <div class="transaction-item">
-
-                            <div>
-                                <strong>
-                                    Transport
-                                </strong>
-
-                                <span>
-                                    06 oct. 2026
-                                </span>
-                            </div>
-
-                            <strong class="expense">
-                                -7 500 FCFA
-                            </strong>
-
-                        </div>
+                            {% endfor %}
+                        {% else %}
+                        <p>Aucune transaction pour l'instant</p>
+                        {% endif %}
 
                     </div>
 
