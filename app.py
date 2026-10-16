@@ -98,28 +98,32 @@ def dashboard():
 
     conn=get_connection()
     
-    depenses=conn.execute("""
+    depenses_enregis=conn.execute("""
         SELECT montant,description,date_depense FROM depenses
         WHERE utilisateur_id= ?
     """,(session["utilisateur_id"],)).fetchall()
     
-    revenues=conn.execute("""
+    revenues_enregis=conn.execute("""
             SELECT montant,description,date_revenu FROM revenues
             WHERE utilisateur_id= ?
         """,(session["utilisateur_id"],)).fetchall()
     
     transactions=[]
     
-    for depense in depenses:
-        transactions.append((*depense,"Depense"))
-    for revenu in revenues:
-        transactions.append((*revenu,"Revenu"))
+    depenses=0
+    revenues=0
+    for i in depenses_enregis:
+        transactions.append((*i,"Depense"))
+        depenses+=i[0]
+    for j in revenues_enregis:
+        transactions.append((*j,"Revenu"))
+        revenues+=j[0]
     
     transactions.sort(key=lambda x: x[2], reverse=True)
     
     conn.close()
 
-    return render_template("dashboard.html",transactions=transactions)
+    return render_template("dashboard.html",transactions=transactions,revenues=revenues,depenses=depenses)
 
 
 @app.route("/transactions")
@@ -404,11 +408,16 @@ def profile():
 
         conn.execute("""
             UPDATE utilisateurs
-            SET name=?, email=?
+            SET name=?,
+            email=?
             WHERE id=?
         """,(nom_complet,email,session["utilisateur_id"],))
+        if nom_complet != "":
+            session["name"]=nom_complet
 
         conn.commit()
+
+        return redirect(url_for("dashboard"))
 
     user=conn.execute("""
         SELECT name,email,date_creation

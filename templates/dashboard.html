@@ -154,7 +154,7 @@
                     </span>
 
                     <strong>
-                        685 000 FCFA
+                        {{revenues}} FCFA
                     </strong>
 
                     <small>
@@ -171,7 +171,7 @@
                     </span>
 
                     <strong>
-                        256 500 FCFA
+                        {{depenses}} FCFA
                     </strong>
 
                     <small>
@@ -281,21 +281,21 @@
 
                             <div>
                                 <strong>
-                                    {{transaction[1]}} <!-- Description -->
+                                    {{transaction[1]}}
                                 </strong>
 
                                 <span>
-                                    {{transaction[3]}} <!-- date -->
+                                    {{transaction[3]}}
                                 </span>
                             </div>
 
                                 {% if transaction[3]== "Revenu" %}
                             <strong class="income">
-                                +{{transaction[0]}} FCFA <!-- montant -->
+                                +{{transaction[0]}} FCFA 
                             </strong>
                                 {% elif transaction[3]== "Depense" %}
                             <strong class="expense">
-                                -{{transaction[0]}} FCFA <!-- montant -->
+                                -{{transaction[0]}} FCFA
                             </strong>
                                 {% endif %}
 
