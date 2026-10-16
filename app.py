@@ -125,7 +125,18 @@ def transactions():
             WHERE utilisateur_id= ?
         """,(session["utilisateur_id"],)).fetchall()
 
-    return render_template("transactions.html",depenses=depenses,revenues=revenues)
+    transactions=[]
+
+    for depense in depenses:
+        transactions.append((*depense,"Depense"))
+    for revenu in revenues:
+        transactions.append((*revenu,"Revenu"))
+
+    transactions.sort(key=lambda x: x[3], reverse=True)
+
+    conn.close()
+
+    return render_template("transactions.html",depenses=depenses,revenues=revenues,transactions=transactions)
 
 @app.route("/add_transaction", methods=["GET","POST"])
 def add_transaction():
@@ -168,6 +179,8 @@ def add_transaction():
             conn.commit()
         
         conn.close()
+
+        return redirect(url_for("transactions"))
 
         
     return render_template("add_transaction.html")

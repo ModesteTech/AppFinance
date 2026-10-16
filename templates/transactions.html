@@ -149,34 +149,22 @@
 
                         </thead>
 
-                        {% if depenses or revenues %}
+                        {% if transactions %}
                             
                         <tbody>
-
-                            {% if depenses %}
-
-                                {% for depense in depenses %}
+                            {% for transaction in transactions %}
                             <tr>
-                                <td>{{depense[1]}}</td>
-                                <td>Revenu</td>
-                                <td>{{depense[2]}}</td>
-                                <td>{{depense[3]}}</td>
-                                <td class="income">+{{depense[0]}} FCFA</td>
+                                <td>{{transaction[1]}}</td>
+                                <td>{{transaction[4]}}</td>
+                                <td>{{transaction[2]}}</td>
+                                <td>{{transaction[3]}}</td>
+                                {% if transaction[4]== "Depense" %}
+                                <td class="expense">-{{transaction[0]}} FCFA</td>
+                                {% else %}
+                                <td class="income">+{{transaction[0]}} FCFA</td>
+                                {% endif %}
                             </tr>
-                                {% endfor %}
-                            {% endif %}
-
-                            {% if revenues %}
-                                {% for revenu in revenues %}
-                            <tr>
-                                <td>{{revenu[1]}}</td>
-                                <td>Dépense</td>
-                                <td>{{revenu[2]}}</td>
-                                <td>{{revenu[3]}}</td>
-                                <td class="expense">-{{revenu[0]}} FCFA</td>
-                            </tr>
-                                {% endfor %}
-                            {% endif %}
+                            {% endfor %}
 
                         </tbody>
                     </table>
