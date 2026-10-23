@@ -45,6 +45,21 @@ def init_db():
             ON DELETE CASCADE
         );
 
+        CREATE TABLE IF NOT EXISTS budgets(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            utilisateur_id INTEGER NOT NULL,
+            nom TEXT NOT NULL,
+            montant_max REAL CHECK(montant_max>0) NOT NULL,
+            date_debut DATE DEFAULT CURRENT_DATE NOT NULL,
+            date_fin DATE NOT NULL,
+            categorie TEXT NOT NULL,
+            FOREIGN KEY(utilisateur_id) REFERENCES utilisateurs(id)
+            ON DELETE CASCADE,
+            FOREIGN KEY(utilisateur_id) REFERENCES categories(id)
+            ON DELETE CASCADE,
+            CHECK (date_debut<=date_fin)
+        )
+
     """)
 
     connection.commit()

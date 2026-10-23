@@ -358,12 +358,45 @@ def add_expense():
 def budgets():
     if "utilisateur_id" not in session:
         return redirect(url_for("login"))
-    return render_template("budgets.html")
 
-@app.route("/create_budget")
+    conn=get_connection()
+
+    budgets=conn.execute("""
+        SELECT nom,montant_max,date_debut,date_fin,categorie FROM budgets
+        WHERE utilisateur_id=?
+    """,(session['utilisateur_id'],)).fetchall()
+
+    conn.close()
+
+    budgets.sort(key=lambda t:t[3])
+    print(budgets)
+    
+    return render_template("budgets.html",budgets=budgets)
+
+@app.route("/create_budget", methods=["GET","POST"])
 def create_budget():
     if "utilisateur_id" not in session:
         return redirect(url_for("login"))
+
+    if request.method=="POST":
+        name=request.form.get("name")
+        category=request.form.get("category")
+        montant_max=request.form.get("amount")
+        date_debut=request.form.get("start")
+        date_fin=request.form.get("end")
+
+        conn=get_connection()
+
+        conn.execute("""
+            INSERT INTO budgets (utilisateur_id,nom,montant_max,date_debut,date_fin,categorie)
+            VALUES (?,?,?,?,?,?)
+        """,(session["utilisateur_id"],name,montant_max,date_debut,date_fin,category))
+
+        conn.commit()
+        conn.close()
+
+        return redirect(url_for('budgets'))
+    
     return render_template("create_budget.html")
 
 @app.route("/budget_detail")

@@ -71,111 +71,50 @@
 
             </header>
 
-
+            {% if budgets %}
             <section class="budget-grid">
 
-                <article class="budget-card">
+                    {% for budget in budgets %}
 
-                    <div class="budget-card-header">
+                    <article class="budget-card">
 
-                        <div>
-                            <h2>Alimentation</h2>
-                            <span>Octobre 2026</span>
+                        <div class="budget-card-header">
+
+                            <div>
+                                <h2>{{budget[4]}}</h2>
+                                <span>{{budget[2]}}</span>
+                            </div>
+
+                            <span class="budget-status">
+                                62 %  <!-- Statique -->
+                            </span>
+
                         </div>
 
-                        <span class="budget-status">
-                            62 %
-                        </span>
+                        <strong>
+                            62 000 / {{budget[1]}} FCFA
+                        </strong>
 
-                    </div>
-
-                    <strong>
-                        62 000 / 100 000 FCFA
-                    </strong>
-
-                    <div class="progress">
-                        <span style="width: 62%;"></span>
-                    </div>
-
-                    <p>
-                        38 000 FCFA restants
-                    </p>
-
-                    <a href="{{url_for('budget_detail')}}">
-                        Voir le budget →
-                    </a>
-
-                </article>
-
-
-                <article class="budget-card">
-
-                    <div class="budget-card-header">
-
-                        <div>
-                            <h2>Transport</h2>
-                            <span>Octobre 2026</span>
+                        <div class="progress">
+                            <span style="width: 62%;"></span>
                         </div>
 
-                        <span class="budget-status">
-                            45 %
-                        </span>
+                        <p>
+                            38 000 FCFA restants
+                        </p>
 
-                    </div>
+                        <a href="{{url_for('budget_detail')}}">
+                            Voir le budget →
+                        </a>
 
-                    <strong>
-                        22 500 / 50 000 FCFA
-                    </strong>
+                    </article>
 
-                    <div class="progress">
-                        <span style="width: 45%;"></span>
-                    </div>
-
-                    <p>
-                        27 500 FCFA restants
-                    </p>
-
-                    <a href="{{url_for('budget_detail')}}">
-                        Voir le budget →
-                    </a>
-
-                </article>
-
-
-                <article class="budget-card">
-
-                    <div class="budget-card-header">
-
-                        <div>
-                            <h2>Loisirs</h2>
-                            <span>Octobre 2026</span>
-                        </div>
-
-                        <span class="budget-status">
-                            28 %
-                        </span>
-
-                    </div>
-
-                    <strong>
-                        14 000 / 50 000 FCFA
-                    </strong>
-
-                    <div class="progress">
-                        <span style="width: 28%;"></span>
-                    </div>
-
-                    <p>
-                        36 000 FCFA restants
-                    </p>
-
-                    <a href="{{url_for('budget_detail')}}">
-                        Voir le budget →
-                    </a>
-
-                </article>
+                    {% endfor %}
 
             </section>
+            {% else %}
+                    <p class="aucun">Aucun budget pour l'instant</p>
+                {% endif %}
 
         </main>
 

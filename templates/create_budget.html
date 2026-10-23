@@ -66,7 +66,7 @@
 
             <section class="form-card">
 
-                <form>
+                <form method="POST">
 
                     <div class="form-group">
 
@@ -77,6 +77,7 @@
                         <input
                             type="text"
                             id="name"
+                            name="name"
                             placeholder="Ex : Alimentation"
                             required
                         >
@@ -90,7 +91,7 @@
                             Catégorie
                         </label>
 
-                        <select id="category">
+                        <select id="category" name="category">
 
                             <option>
                                 Alimentation
@@ -126,6 +127,7 @@
                         <input
                             type="number"
                             id="amount"
+                            name="amount"
                             placeholder="100000"
                             required
                         >
@@ -144,6 +146,7 @@
                             <input
                                 type="date"
                                 id="start"
+                                name="start"
                             >
 
                         </div>
@@ -158,6 +161,7 @@
                             <input
                                 type="date"
                                 id="end"
+                                name="end"
                             >
 
                         </div>
@@ -167,9 +171,9 @@
 
                     <div class="form-actions">
 
-                        <a href="budgets.html" class="button button-secondary">
+                        <button type="reset" class="button button-secondary">
                             Annuler
-                        </a>
+                        </button>
 
                         <button
                             type="submit"
