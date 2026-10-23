@@ -11,8 +11,6 @@ app.secret_key=os.environ["SECRET_KEY"]
 
 @app.route("/")
 def index():
-    if "utilisateur_id" not in session:
-        return redirect(url_for("login"))
     return render_template("index.html")
 
 @app.route("/register", methods=["GET", "POST"])
@@ -118,12 +116,14 @@ def dashboard():
     for j in revenues_enregis:
         transactions.append((*j,"Revenu"))
         revenues+=j[0]
+
+    solde=revenues-depenses
     
     transactions.sort(key=lambda x: x[2], reverse=True)
     
     conn.close()
 
-    return render_template("dashboard.html",transactions=transactions,revenues=revenues,depenses=depenses)
+    return render_template("dashboard.html",transactions=transactions,revenues=revenues,depenses=depenses,solde=solde)
 
 
 @app.route("/transactions")
@@ -509,14 +509,10 @@ def settings():
 
 @app.route("/help")
 def help():
-    if "utilisateur_id" not in session:
-        return redirect(url_for("login"))
     return render_template("help.html")
 
 @app.route("/about")
 def about():
-    if "utilisateur_id" not in session:
-        return redirect(url_for("login"))
     return render_template("about.html")
 
 @app.route("/deconnexion")

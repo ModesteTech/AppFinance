@@ -17,7 +17,7 @@
 
         <div class="container header-content">
 
-            <a href="{{url_for('dashboard')}}" class="logo">
+            <a href="{{url_for('index')}}" class="logo">
                 <span class="logo-mark">W</span>
                 <span class="logo-text">WANDJI FINANCE</span>
             </a>
@@ -36,10 +36,21 @@
                     Aide
                 </a>
 
-                <a href="{{url_for('login')}}">
-                    Connexion
-                </a>
+                {% if "utilisateur_id" not in session %}
+                    <a href="{{url_for('login')}}">
+                        Connexion
+                    </a>
+                {%else%}
+                    <a href="{{url_for('deconnexion')}}">
+                        Deconnexion
+                    </a>
+                {%endif%}
 
+                {%if "utilisateur_id" not in session%}
+                    <a href="{{url_for('register')}}" class="nav-button">
+                        Créer un compte
+                    </a>
+                {%endif%}
             </nav>
 
         </div>

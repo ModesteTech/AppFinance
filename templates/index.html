@@ -32,7 +32,7 @@
                     À propos
                 </a>
 
-                {%if "utilisateur_id" not in session%}
+                {% if "utilisateur_id" not in session %}
                     <a href="{{url_for('login')}}">
                         Connexion
                     </a>
